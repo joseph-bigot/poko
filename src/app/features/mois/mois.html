@@ -1,1 +1,185 @@
-<p>mois works!</p>
+<section class="mois-page">
+
+  <div class="mois-header">
+
+    <div>
+      <p class="mois-eyebrow">
+        Historique
+      </p>
+
+      <h1>
+        Mes mois
+      </h1>
+
+      <p class="mois-description">
+        Consultez et gérez vos différents mois budgétaires.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="create-month-button"
+      [disabled]="creating"
+      (click)="createNextMonth()"
+    >
+      {{ creating ? 'Création...' : 'Nouveau mois' }}
+    </button>
+
+  </div>
+
+  <div
+    class="loading-message"
+    *ngIf="loading"
+  >
+    Chargement des mois...
+  </div>
+
+  <div
+    class="empty-message"
+    *ngIf="!loading && months.length === 0"
+  >
+    <strong>
+      Aucun mois enregistré
+    </strong>
+
+    <span>
+      Créez votre premier mois pour commencer à gérer votre budget.
+    </span>
+
+    <button
+      type="button"
+      class="empty-button"
+      [disabled]="creating"
+      (click)="createNextMonth()"
+    >
+      Créer mon premier mois
+    </button>
+  </div>
+
+  <div
+    class="months-list"
+    *ngIf="!loading && months.length > 0"
+  >
+
+    <article
+      class="month-card"
+      *ngFor="let month of months"
+    >
+
+      <div class="month-card-header">
+
+        <div>
+          <p class="month-year">
+            {{ month.year }}
+          </p>
+
+          <h2>
+            {{ getMonthLabel(month) }}
+          </h2>
+        </div>
+
+        <button
+          type="button"
+          class="delete-button"
+          (click)="deleteMonth(month)"
+          aria-label="Supprimer le mois"
+        >
+          Supprimer
+        </button>
+
+      </div>
+
+      <div class="month-summary">
+
+        <div class="summary-item">
+          <span>
+            Revenus
+          </span>
+
+          <strong>
+            {{
+              getMonthSummary(month).revenues
+                | number:'1.2-2'
+            }} €
+          </strong>
+        </div>
+
+        <div class="summary-item">
+          <span>
+            Dépenses
+          </span>
+
+          <strong>
+            {{
+              getMonthSummary(month).expenses
+                | number:'1.2-2'
+            }} €
+          </strong>
+        </div>
+
+        <div class="summary-item">
+          <span>
+            Épargne
+          </span>
+
+          <strong>
+            {{
+              getMonthSummary(month).savings
+                | number:'1.2-2'
+            }} €
+          </strong>
+        </div>
+
+        <div class="summary-item summary-item--available">
+          <span>
+            Disponible
+          </span>
+
+          <strong>
+            {{
+              getMonthSummary(month).available
+                | number:'1.2-2'
+            }} €
+          </strong>
+        </div>
+
+      </div>
+
+      <div class="month-card-footer">
+
+        <span class="month-info">
+          {{
+            month.revenues.length
+          }}
+          revenu{{ month.revenues.length > 1 ? 's' : '' }}
+
+          ·
+
+          {{
+            month.fixedExpenses.length
+          }}
+          charge{{ month.fixedExpenses.length > 1 ? 's' : '' }}
+
+          ·
+
+          {{
+            month.expenses.length
+          }}
+          dépense{{ month.expenses.length > 1 ? 's' : '' }}
+        </span>
+
+        <button
+          type="button"
+          class="open-button"
+          (click)="openMonth(month)"
+        >
+          Ouvrir
+        </button>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>

@@ -35,7 +35,7 @@ export class Charges implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.currentMonth =
-      await this.monthService.getOrCreateCurrentMonth();
+      await this.monthService.getSelectedMonth();
 
     this.changeDetectorRef.detectChanges();
   }
@@ -62,7 +62,9 @@ export class Charges implements OnInit {
       recurring: this.recurring,
     };
 
-    this.currentMonth.fixedExpenses.push(charge);
+    this.currentMonth.fixedExpenses.push(
+      charge
+    );
 
     this.currentMonth.updatedAt =
       new Date().toISOString();
@@ -76,13 +78,23 @@ export class Charges implements OnInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  editCharge(charge: FixedExpense): void {
-    this.editingChargeId = charge.id;
+  editCharge(
+    charge: FixedExpense
+  ): void {
+    this.editingChargeId =
+      charge.id;
 
-    this.label = charge.label;
-    this.amount = charge.amount;
-    this.dueDay = charge.dueDay ?? null;
-    this.recurring = charge.recurring;
+    this.label =
+      charge.label;
+
+    this.amount =
+      charge.amount;
+
+    this.dueDay =
+      charge.dueDay ?? null;
+
+    this.recurring =
+      charge.recurring;
 
     this.changeDetectorRef.detectChanges();
   }
@@ -106,17 +118,25 @@ export class Charges implements OnInit {
     const charge =
       this.currentMonth.fixedExpenses.find(
         (item) =>
-          item.id === this.editingChargeId
+          item.id ===
+          this.editingChargeId
       );
 
     if (!charge) {
       return;
     }
 
-    charge.label = this.label.trim();
-    charge.amount = this.amount;
-    charge.dueDay = this.dueDay ?? undefined;
-    charge.recurring = this.recurring;
+    charge.label =
+      this.label.trim();
+
+    charge.amount =
+      this.amount;
+
+    charge.dueDay =
+      this.dueDay ?? undefined;
+
+    charge.recurring =
+      this.recurring;
 
     this.currentMonth.updatedAt =
       new Date().toISOString();
@@ -130,7 +150,9 @@ export class Charges implements OnInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  async deleteCharge(id: string): Promise<void> {
+  async deleteCharge(
+    id: string
+  ): Promise<void> {
     if (!this.currentMonth) {
       return;
     }
@@ -148,7 +170,9 @@ export class Charges implements OnInit {
       this.currentMonth
     );
 
-    if (this.editingChargeId === id) {
+    if (
+      this.editingChargeId === id
+    ) {
       this.resetForm();
     }
 

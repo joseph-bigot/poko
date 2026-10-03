@@ -1,1 +1,279 @@
-<p>objectifs works!</p>
+<section class="objectifs-page">
+
+  <div class="objectifs-header">
+
+    <div>
+      <p class="objectifs-eyebrow">
+        Épargne
+      </p>
+
+      <h1>
+        Objectifs
+      </h1>
+
+      <p class="objectifs-description">
+        Définissez vos objectifs et suivez votre progression.
+      </p>
+    </div>
+
+  </div>
+
+  <article class="goal-form-card">
+
+    <div class="goal-form-header">
+
+      <div>
+        <h2>
+          {{ editingGoalId ? 'Modifier un objectif' : 'Nouvel objectif' }}
+        </h2>
+
+        <p>
+          {{
+            editingGoalId
+              ? 'Modifiez les informations de votre objectif.'
+              : 'Créez un objectif d’épargne.'
+          }}
+        </p>
+      </div>
+
+    </div>
+
+    <form
+      class="goal-form"
+      (ngSubmit)="editingGoalId ? updateGoal() : addGoal()"
+    >
+
+      <div class="form-field">
+
+        <label for="goal-name">
+          Nom
+        </label>
+
+        <input
+          id="goal-name"
+          type="text"
+          name="name"
+          [(ngModel)]="name"
+          placeholder="Ex. Vacances"
+        >
+
+      </div>
+
+      <div class="form-field">
+
+        <label for="goal-target">
+          Montant cible
+        </label>
+
+        <div class="input-with-suffix">
+          <input
+            id="goal-target"
+            type="number"
+            name="targetAmount"
+            [(ngModel)]="targetAmount"
+            min="0"
+            step="0.01"
+            placeholder="0"
+          >
+
+          <span>
+            €
+          </span>
+        </div>
+
+      </div>
+
+      <div class="form-field">
+
+        <label for="goal-current">
+          Montant déjà épargné
+        </label>
+
+        <div class="input-with-suffix">
+          <input
+            id="goal-current"
+            type="number"
+            name="currentAmount"
+            [(ngModel)]="currentAmount"
+            min="0"
+            step="0.01"
+            placeholder="0"
+          >
+
+          <span>
+            €
+          </span>
+        </div>
+
+      </div>
+
+      <div class="form-field">
+
+        <label for="goal-deadline">
+          Échéance
+        </label>
+
+        <input
+          id="goal-deadline"
+          type="date"
+          name="deadline"
+          [(ngModel)]="deadline"
+        >
+
+      </div>
+
+      <div class="form-actions">
+
+        <button
+          *ngIf="editingGoalId"
+          type="button"
+          class="secondary-button"
+          (click)="cancelEdit()"
+        >
+          Annuler
+        </button>
+
+        <button
+          type="submit"
+          class="primary-button"
+        >
+          {{
+            editingGoalId
+              ? 'Enregistrer'
+              : 'Ajouter l’objectif'
+          }}
+        </button>
+
+      </div>
+
+    </form>
+
+  </article>
+
+  <div
+    class="empty-message"
+    *ngIf="
+      currentMonth &&
+      currentMonth.savings.length === 0
+    "
+  >
+
+    <strong>
+      Aucun objectif
+    </strong>
+
+    <span>
+      Créez votre premier objectif d’épargne ci-dessus.
+    </span>
+
+  </div>
+
+  <div
+    class="goals-grid"
+    *ngIf="
+      currentMonth &&
+      currentMonth.savings.length > 0
+    "
+  >
+
+    <article
+      class="goal-card"
+      *ngFor="let goal of currentMonth.savings"
+    >
+
+      <div class="goal-card-header">
+
+        <div>
+          <p class="goal-label">
+            Objectif
+          </p>
+
+          <h2>
+            {{ goal.name }}
+          </h2>
+        </div>
+
+        <span class="goal-percentage">
+          {{ getProgress(goal) | number:'1.0-0' }} %
+        </span>
+
+      </div>
+
+      <div class="progress-track">
+
+        <div
+          class="progress-value"
+          [style.width.%]="getProgress(goal)"
+        ></div>
+
+      </div>
+
+      <div class="goal-amounts">
+
+        <div>
+          <span>
+            Épargné
+          </span>
+
+          <strong>
+            {{ goal.currentAmount | number:'1.2-2' }} €
+          </strong>
+        </div>
+
+        <div>
+          <span>
+            Objectif
+          </span>
+
+          <strong>
+            {{ goal.targetAmount | number:'1.2-2' }} €
+          </strong>
+        </div>
+
+      </div>
+
+      <div class="goal-remaining">
+
+        <span>
+          Reste à épargner
+        </span>
+
+        <strong>
+          {{ getRemainingAmount(goal) | number:'1.2-2' }} €
+        </strong>
+
+      </div>
+
+      <div
+        class="goal-deadline"
+        *ngIf="goal.deadline"
+      >
+        Échéance :
+        {{ goal.deadline | date:'dd/MM/yyyy' }}
+      </div>
+
+      <div class="goal-card-footer">
+
+        <button
+          type="button"
+          class="edit-button"
+          (click)="editGoal(goal)"
+        >
+          Modifier
+        </button>
+
+        <button
+          type="button"
+          class="delete-button"
+          (click)="deleteGoal(goal.id)"
+        >
+          Supprimer
+        </button>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>

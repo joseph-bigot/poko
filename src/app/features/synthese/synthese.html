@@ -1,1 +1,421 @@
-<p>synthese works!</p>
+<section class="synthese-page">
+
+  <div class="synthese-header">
+    <div>
+      <p class="synthese-eyebrow">Analyse du budget</p>
+
+      <h1>Synthèse</h1>
+
+      <p class="synthese-description">
+        Analysez votre situation financière sur une période donnée.
+      </p>
+    </div>
+  </div>
+
+  <section class="period-card">
+
+    <div class="quick-periods">
+
+      <button
+        type="button"
+        [class.active]="selectedPeriod === 'current'"
+        (click)="selectPeriod('current')"
+      >
+        Mois courant
+      </button>
+
+      <button
+        type="button"
+        [class.active]="selectedPeriod === '3months'"
+        (click)="selectPeriod('3months')"
+      >
+        3 mois
+      </button>
+
+      <button
+        type="button"
+        [class.active]="selectedPeriod === '6months'"
+        (click)="selectPeriod('6months')"
+      >
+        6 mois
+      </button>
+
+      <button
+        type="button"
+        [class.active]="selectedPeriod === 'year'"
+        (click)="selectPeriod('year')"
+      >
+        Année en cours
+      </button>
+
+      <button
+        type="button"
+        [class.active]="selectedPeriod === 'custom'"
+        (click)="selectPeriod('custom')"
+      >
+        Personnalisée
+      </button>
+
+    </div>
+
+    <div class="custom-period">
+
+      <div class="period-field">
+        <label for="startMonth">
+          Du
+        </label>
+
+        <select
+          id="startMonth"
+          name="startMonth"
+          [(ngModel)]="selectedStartMonth"
+          (ngModelChange)="selectedPeriod = 'custom'; calculateSynthesis()"
+        >
+          <option
+            *ngFor="let month of months"
+            [value]="month.id"
+          >
+            {{ getMonthLabel(month) }}
+          </option>
+        </select>
+      </div>
+
+      <div class="period-field">
+        <label for="endMonth">
+          Au
+        </label>
+
+        <select
+          id="endMonth"
+          name="endMonth"
+          [(ngModel)]="selectedEndMonth"
+          (ngModelChange)="selectedPeriod = 'custom'; calculateSynthesis()"
+        >
+          <option
+            *ngFor="let month of months"
+            [value]="month.id"
+          >
+            {{ getMonthLabel(month) }}
+          </option>
+        </select>
+      </div>
+
+    </div>
+
+  </section>
+
+  <div
+    class="loading-message"
+    *ngIf="loading"
+  >
+    Chargement de la synthèse...
+  </div>
+
+  <div
+    class="empty-message"
+    *ngIf="!loading && months.length === 0"
+  >
+    Aucun mois enregistré.
+  </div>
+
+  <ng-container
+    *ngIf="!loading && months.length > 0"
+  >
+
+    <section class="summary-grid">
+
+      <article class="summary-card">
+        <span class="summary-card-label">
+          Revenus
+        </span>
+
+        <strong class="summary-card-value">
+          {{ totalRevenues | number:'1.2-2' }} €
+        </strong>
+      </article>
+
+      <article class="summary-card">
+        <span class="summary-card-label">
+          Charges fixes
+        </span>
+
+        <strong class="summary-card-value">
+          {{ totalFixedExpenses | number:'1.2-2' }} €
+        </strong>
+      </article>
+
+      <article class="summary-card">
+        <span class="summary-card-label">
+          Dépenses
+        </span>
+
+        <strong class="summary-card-value">
+          {{ totalExpenses | number:'1.2-2' }} €
+        </strong>
+      </article>
+
+      <article class="summary-card">
+        <span class="summary-card-label">
+          Épargne
+        </span>
+
+        <strong class="summary-card-value">
+          {{ totalSavings | number:'1.2-2' }} €
+        </strong>
+      </article>
+
+    </section>
+
+    <section class="available-card">
+
+      <div>
+        <span class="available-label">
+          Reste disponible
+        </span>
+
+        <p class="available-description">
+          Revenus − charges fixes − dépenses − épargne
+        </p>
+      </div>
+
+      <strong class="available-value">
+        {{ availableAmount | number:'1.2-2' }} €
+      </strong>
+
+    </section>
+
+    <section class="average-section">
+
+      <div class="section-heading">
+        <p class="section-eyebrow">
+          Moyennes
+        </p>
+
+        <h2>
+          Moyenne mensuelle
+        </h2>
+      </div>
+
+      <div class="average-grid">
+
+        <article class="average-card">
+          <span>Revenus</span>
+
+          <strong>
+            {{ averageMonthlyRevenues | number:'1.2-2' }} €
+          </strong>
+        </article>
+
+        <article class="average-card">
+          <span>Dépenses</span>
+
+          <strong>
+            {{ averageMonthlyExpenses | number:'1.2-2' }} €
+          </strong>
+        </article>
+
+        <article class="average-card">
+          <span>Épargne</span>
+
+          <strong>
+            {{ averageMonthlySavings | number:'1.2-2' }} €
+          </strong>
+        </article>
+
+        <article class="average-card">
+          <span>Reste disponible</span>
+
+          <strong>
+            {{ averageMonthlyAvailable | number:'1.2-2' }} €
+          </strong>
+        </article>
+
+      </div>
+
+    </section>
+
+    <section class="category-section">
+
+      <div class="section-heading">
+        <p class="section-eyebrow">
+          Répartition
+        </p>
+
+        <h2>
+          Dépenses par catégorie
+        </h2>
+      </div>
+
+      <div class="category-list">
+
+        <article
+          class="category-card"
+          *ngFor="let category of expenseCategories"
+        >
+
+          <div class="category-header">
+
+            <span class="category-name">
+              {{ category.name }}
+            </span>
+
+            <strong class="category-amount">
+              {{ category.total | number:'1.2-2' }} €
+            </strong>
+
+          </div>
+
+          <div class="category-progress">
+
+            <div
+              class="category-progress-bar"
+              [style.width.%]="category.percentage"
+            ></div>
+
+          </div>
+
+          <span class="category-percentage">
+            {{ category.percentage | number:'1.0-1' }} %
+          </span>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <section class="monthly-section">
+
+      <div class="section-heading">
+        <p class="section-eyebrow">
+          Évolution
+        </p>
+
+        <h2>
+          Évolution mensuelle
+        </h2>
+
+        <p class="section-description">
+          Comparaison des principaux indicateurs pour chaque mois.
+        </p>
+      </div>
+
+      <div class="monthly-chart">
+
+        <article
+          class="monthly-card"
+          *ngFor="let month of monthlyData"
+        >
+
+          <div class="monthly-card-header">
+
+            <div>
+              <span class="monthly-month">
+                {{ month.label }}
+              </span>
+
+              <span class="monthly-available">
+                Reste disponible :
+                {{ month.available | number:'1.2-2' }} €
+              </span>
+            </div>
+
+          </div>
+
+          <div class="monthly-bars">
+
+            <div class="monthly-bar-row">
+
+              <div class="monthly-bar-info">
+                <span>Revenus</span>
+
+                <strong>
+                  {{ month.revenues | number:'1.2-2' }} €
+                </strong>
+              </div>
+
+              <div class="monthly-bar-track">
+
+                <div
+                  class="monthly-bar monthly-bar--revenues"
+                  [style.width.%]="month.revenuesWidth"
+                ></div>
+
+              </div>
+
+            </div>
+
+            <div class="monthly-bar-row">
+
+              <div class="monthly-bar-info">
+                <span>Dépenses</span>
+
+                <strong>
+                  {{ month.expenses | number:'1.2-2' }} €
+                </strong>
+              </div>
+
+              <div class="monthly-bar-track">
+
+                <div
+                  class="monthly-bar monthly-bar--expenses"
+                  [style.width.%]="month.expensesWidth"
+                ></div>
+
+              </div>
+
+            </div>
+
+            <div class="monthly-bar-row">
+
+              <div class="monthly-bar-info">
+                <span>Épargne</span>
+
+                <strong>
+                  {{ month.savings | number:'1.2-2' }} €
+                </strong>
+              </div>
+
+              <div class="monthly-bar-track">
+
+                <div
+                  class="monthly-bar monthly-bar--savings"
+                  [style.width.%]="month.savingsWidth"
+                ></div>
+
+              </div>
+
+            </div>
+
+            <div class="monthly-bar-row">
+
+              <div class="monthly-bar-info">
+                <span>Disponible</span>
+
+                <strong>
+                  {{ month.available | number:'1.2-2' }} €
+                </strong>
+              </div>
+
+              <div class="monthly-bar-track">
+
+                <div
+                  class="monthly-bar monthly-bar--available"
+                  [style.width.%]="month.availableWidth"
+                ></div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+  </ng-container>
+
+</section>

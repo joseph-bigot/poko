@@ -45,7 +45,7 @@ export class Depenses implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.currentMonth =
-      await this.monthService.getOrCreateCurrentMonth();
+      await this.monthService.getSelectedMonth();
 
     this.date =
       new Date().toISOString().split('T')[0];
@@ -74,7 +74,9 @@ export class Depenses implements OnInit {
       date: this.date,
     };
 
-    this.currentMonth.expenses.push(expense);
+    this.currentMonth.expenses.push(
+      expense
+    );
 
     this.currentMonth.updatedAt =
       new Date().toISOString();
@@ -88,13 +90,23 @@ export class Depenses implements OnInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  editExpense(expense: Expense): void {
-    this.editingExpenseId = expense.id;
+  editExpense(
+    expense: Expense
+  ): void {
+    this.editingExpenseId =
+      expense.id;
 
-    this.label = expense.label;
-    this.amount = expense.amount;
-    this.categoryId = expense.categoryId;
-    this.date = expense.date;
+    this.label =
+      expense.label;
+
+    this.amount =
+      expense.amount;
+
+    this.categoryId =
+      expense.categoryId;
+
+    this.date =
+      expense.date;
 
     this.changeDetectorRef.detectChanges();
   }
@@ -118,17 +130,25 @@ export class Depenses implements OnInit {
     const expense =
       this.currentMonth.expenses.find(
         (item) =>
-          item.id === this.editingExpenseId
+          item.id ===
+          this.editingExpenseId
       );
 
     if (!expense) {
       return;
     }
 
-    expense.label = this.label.trim();
-    expense.amount = this.amount;
-    expense.categoryId = this.categoryId;
-    expense.date = this.date;
+    expense.label =
+      this.label.trim();
+
+    expense.amount =
+      this.amount;
+
+    expense.categoryId =
+      this.categoryId;
+
+    expense.date =
+      this.date;
 
     this.currentMonth.updatedAt =
       new Date().toISOString();
@@ -142,7 +162,9 @@ export class Depenses implements OnInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  async deleteExpense(id: string): Promise<void> {
+  async deleteExpense(
+    id: string
+  ): Promise<void> {
     if (!this.currentMonth) {
       return;
     }
@@ -160,7 +182,9 @@ export class Depenses implements OnInit {
       this.currentMonth
     );
 
-    if (this.editingExpenseId === id) {
+    if (
+      this.editingExpenseId === id
+    ) {
       this.resetForm();
     }
 
@@ -173,7 +197,9 @@ export class Depenses implements OnInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  getCategoryName(categoryId: string): string {
+  getCategoryName(
+    categoryId: string
+  ): string {
     const category =
       this.categories.find(
         (item) =>

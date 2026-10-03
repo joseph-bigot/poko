@@ -4,10 +4,11 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import { Router } from '@angular/router';
 
+import { Month } from '../../models/month';
 import { BudgetService } from '../../services/budget';
 import { MonthService } from '../../services/month';
-import { Month } from '../../models/month';
 
 @Component({
   selector: 'app-budget',
@@ -23,20 +24,22 @@ export class Budget implements OnInit {
   constructor(
     public budgetService: BudgetService,
     private monthService: MonthService,
+    private router: Router,
     private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.loadingMessage = 'Chargement du mois...';
+    this.loadingMessage =
+      'Chargement du mois...';
 
     try {
       this.currentMonth =
-        await this.monthService.getOrCreateCurrentMonth();
+        await this.monthService.getSelectedMonth();
 
-      this.loadingMessage = 'Mois chargé.';
+      this.loadingMessage =
+        'Mois chargé.';
 
       this.changeDetectorRef.detectChanges();
-
     } catch (error) {
       console.error(
         'Erreur Budget :',
@@ -48,5 +51,38 @@ export class Budget implements OnInit {
 
       this.changeDetectorRef.detectChanges();
     }
+  }
+
+  getMonthLabel(): string {
+    if (!this.currentMonth) {
+      return '';
+    }
+
+    return this.monthService.getMonthLabel(
+      this.currentMonth
+    );
+  }
+
+  async goToCurrentMonth(): Promise<void> {
+    this.monthService.clearSelectedMonth();
+
+    await this.router.navigate([
+      '/budget',
+    ]);
+  }
+
+  isCurrentMonth(): boolean {
+    if (!this.currentMonth) {
+      return false;
+    }
+
+    const now = new Date();
+
+    return (
+      this.currentMonth.year ===
+        now.getFullYear() &&
+      this.currentMonth.month ===
+        now.getMonth() + 1
+    );
   }
 }

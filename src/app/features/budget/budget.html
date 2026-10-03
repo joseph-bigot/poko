@@ -1,11 +1,14 @@
 <section class="budget-page">
 
   <div class="budget-header">
+
     <div>
-      <p class="budget-eyebrow">Budget actuel</p>
+      <p class="budget-eyebrow">
+        Budget actuel
+      </p>
 
       <h1 *ngIf="currentMonth">
-        {{ currentMonth.month }}/{{ currentMonth.year }}
+        {{ getMonthLabel() }}
       </h1>
 
       <h1 *ngIf="!currentMonth">
@@ -13,51 +16,92 @@
       </h1>
 
       <p class="budget-description">
-        {{ loadingMessage }}
+        {{
+          currentMonth
+            ? 'Situation financière du mois sélectionné.'
+            : loadingMessage
+        }}
       </p>
     </div>
+
+    <button
+      *ngIf="currentMonth && !isCurrentMonth()"
+      type="button"
+      class="current-month-button"
+      (click)="goToCurrentMonth()"
+    >
+      Revenir au mois courant
+    </button>
+
   </div>
 
-  <div class="budget-grid" *ngIf="currentMonth">
+  <div
+    class="budget-grid"
+    *ngIf="currentMonth"
+  >
 
     <article class="budget-card">
+
       <span class="budget-card-label">
         Revenus
       </span>
 
       <strong class="budget-card-value">
-        {{ budgetService.calculateTotalRevenues(currentMonth) | number:'1.2-2' }} €
+        {{
+          budgetService.calculateTotalRevenues(currentMonth)
+            | number:'1.2-2'
+        }}
+        €
       </strong>
+
     </article>
 
     <article class="budget-card">
+
       <span class="budget-card-label">
         Charges fixes
       </span>
 
       <strong class="budget-card-value">
-        {{ budgetService.calculateTotalFixedExpenses(currentMonth) | number:'1.2-2' }} €
+        {{
+          budgetService.calculateTotalFixedExpenses(currentMonth)
+            | number:'1.2-2'
+        }}
+        €
       </strong>
+
     </article>
 
     <article class="budget-card">
+
       <span class="budget-card-label">
         Dépenses
       </span>
 
       <strong class="budget-card-value">
-        {{ budgetService.calculateTotalExpenses(currentMonth) | number:'1.2-2' }} €
+        {{
+          budgetService.calculateTotalExpenses(currentMonth)
+            | number:'1.2-2'
+        }}
+        €
       </strong>
+
     </article>
 
     <article class="budget-card">
+
       <span class="budget-card-label">
         Épargne
       </span>
 
       <strong class="budget-card-value">
-        {{ budgetService.calculateTotalSavings(currentMonth) | number:'1.2-2' }} €
+        {{
+          budgetService.calculateTotalSavings(currentMonth)
+            | number:'1.2-2'
+        }}
+        €
       </strong>
+
     </article>
 
   </div>
@@ -78,7 +122,11 @@
     </div>
 
     <strong class="budget-balance-value">
-      {{ budgetService.calculateAvailableAmount(currentMonth) | number:'1.2-2' }} €
+      {{
+        budgetService.calculateAvailableAmount(currentMonth)
+          | number:'1.2-2'
+      }}
+      €
     </strong>
 
   </article>

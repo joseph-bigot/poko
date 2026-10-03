@@ -1,0 +1,447 @@
+.synthese-page {
+  width: 100%;
+}
+
+.synthese-header {
+  margin-bottom: 32px;
+}
+
+.synthese-eyebrow {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+h1 {
+  margin: 0;
+  font-size: 42px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+
+.synthese-description {
+  margin: 12px 0 0;
+  font-size: 16px;
+  color: #6b7280;
+}
+
+/* Période */
+
+.period-card {
+  margin-bottom: 24px;
+  padding: 24px;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.quick-periods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.quick-periods button {
+  height: 42px;
+  padding: 0 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.quick-periods button:hover {
+  border-color: #d1d5db;
+  background: #ffffff;
+}
+
+.quick-periods button:active {
+  transform: scale(0.97);
+}
+
+.quick-periods button.active {
+  border-color: #1f2937;
+  background: #1f2937;
+  color: #ffffff;
+}
+
+.custom-period {
+  display: flex;
+  gap: 16px;
+}
+
+.period-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 220px;
+}
+
+.period-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.period-field select {
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #f9fafb;
+  color: #1f2937;
+  outline: none;
+  cursor: pointer;
+}
+
+.period-field select:focus {
+  border-color: #9ca3af;
+  background: #ffffff;
+}
+
+/* États */
+
+.loading-message,
+.empty-message {
+  padding: 40px;
+  border-radius: 24px;
+  background: #ffffff;
+  text-align: center;
+  color: #6b7280;
+}
+
+/* Résumé */
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.summary-card {
+  min-height: 170px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.09);
+}
+
+.summary-card-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.summary-card-value {
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+/* Reste disponible */
+
+.available-card {
+  margin-top: 20px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  border-radius: 28px;
+  background: #1f2937;
+  color: #ffffff;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+
+.available-label {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.available-description {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: #d1d5db;
+}
+
+.available-value {
+  font-size: 42px;
+  line-height: 1;
+  letter-spacing: -1.5px;
+  white-space: nowrap;
+}
+
+/* Moyennes */
+
+.average-section {
+  margin-top: 40px;
+}
+
+.section-heading {
+  margin-bottom: 20px;
+}
+
+.section-eyebrow {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+h2 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: -0.8px;
+}
+
+.section-description {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.average-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.average-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+}
+
+.average-card span {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.average-card strong {
+  font-size: 22px;
+  letter-spacing: -0.5px;
+}
+
+/* Répartition */
+
+.category-section {
+  margin-top: 40px;
+}
+
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.category-card {
+  padding: 24px;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.category-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.category-amount {
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.category-progress {
+  width: 100%;
+  height: 8px;
+  margin-top: 16px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #f1f3f5;
+}
+
+.category-progress-bar {
+  height: 100%;
+  border-radius: inherit;
+  background: #1f2937;
+  transition: width 250ms ease;
+}
+
+.category-percentage {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Évolution mensuelle */
+
+.monthly-section {
+  margin-top: 40px;
+}
+
+.monthly-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.monthly-card {
+  padding: 28px;
+  border-radius: 26px;
+  background: #ffffff;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+}
+
+.monthly-card-header {
+  margin-bottom: 24px;
+}
+
+.monthly-month {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.monthly-available {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.monthly-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.monthly-bar-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.monthly-bar-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 13px;
+}
+
+.monthly-bar-info span {
+  color: #6b7280;
+}
+
+.monthly-bar-info strong {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.monthly-bar-track {
+  width: 100%;
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #f1f3f5;
+}
+
+.monthly-bar {
+  height: 100%;
+  min-width: 0;
+  border-radius: inherit;
+  transition: width 300ms ease;
+}
+
+.monthly-bar--revenues {
+  background: #1f2937;
+}
+
+.monthly-bar--expenses {
+  background: #6b7280;
+}
+
+.monthly-bar--savings {
+  background: #9ca3af;
+}
+
+.monthly-bar--available {
+  background: #4b5563;
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+  .summary-grid,
+  .average-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  h1 {
+    font-size: 34px;
+  }
+
+  .custom-period {
+    flex-direction: column;
+  }
+
+  .period-field {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .summary-grid,
+  .average-grid,
+  .category-list {
+    grid-template-columns: 1fr;
+  }
+
+  .available-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .available-value {
+    font-size: 34px;
+  }
+
+  .monthly-card {
+    padding: 20px;
+  }
+}

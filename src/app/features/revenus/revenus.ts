@@ -35,7 +35,7 @@ export class Revenus implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.currentMonth =
-      await this.monthService.getOrCreateCurrentMonth();
+      await this.monthService.getSelectedMonth();
 
     this.date =
       new Date().toISOString().split('T')[0];
@@ -65,7 +65,9 @@ export class Revenus implements OnInit {
       recurring: this.recurring,
     };
 
-    this.currentMonth.revenues.push(revenue);
+    this.currentMonth.revenues.push(
+      revenue
+    );
 
     this.currentMonth.updatedAt =
       new Date().toISOString();
@@ -79,13 +81,23 @@ export class Revenus implements OnInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  editRevenue(revenue: Revenue): void {
-    this.editingRevenueId = revenue.id;
+  editRevenue(
+    revenue: Revenue
+  ): void {
+    this.editingRevenueId =
+      revenue.id;
 
-    this.label = revenue.label;
-    this.amount = revenue.amount;
-    this.date = revenue.date;
-    this.recurring = revenue.recurring;
+    this.label =
+      revenue.label;
+
+    this.amount =
+      revenue.amount;
+
+    this.date =
+      revenue.date;
+
+    this.recurring =
+      revenue.recurring;
 
     this.changeDetectorRef.detectChanges();
   }
@@ -109,17 +121,25 @@ export class Revenus implements OnInit {
     const revenue =
       this.currentMonth.revenues.find(
         (item) =>
-          item.id === this.editingRevenueId
+          item.id ===
+          this.editingRevenueId
       );
 
     if (!revenue) {
       return;
     }
 
-    revenue.label = this.label.trim();
-    revenue.amount = this.amount;
-    revenue.date = this.date;
-    revenue.recurring = this.recurring;
+    revenue.label =
+      this.label.trim();
+
+    revenue.amount =
+      this.amount;
+
+    revenue.date =
+      this.date;
+
+    revenue.recurring =
+      this.recurring;
 
     this.currentMonth.updatedAt =
       new Date().toISOString();
@@ -133,7 +153,9 @@ export class Revenus implements OnInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  async deleteRevenue(id: string): Promise<void> {
+  async deleteRevenue(
+    id: string
+  ): Promise<void> {
     if (!this.currentMonth) {
       return;
     }
@@ -151,7 +173,9 @@ export class Revenus implements OnInit {
       this.currentMonth
     );
 
-    if (this.editingRevenueId === id) {
+    if (
+      this.editingRevenueId === id
+    ) {
       this.resetForm();
     }
 
