@@ -1,0 +1,163 @@
+<section class="depenses-page">
+
+  <div class="depenses-header">
+    <div>
+      <p class="depenses-eyebrow">Gestion du budget</p>
+
+      <h1>Dépenses</h1>
+
+      <p class="depenses-description">
+        Suivez vos dépenses du quotidien.
+      </p>
+    </div>
+  </div>
+
+  <form
+    class="expense-form"
+    (ngSubmit)="editingExpenseId ? updateExpense() : addExpense()"
+  >
+
+    <div class="form-field">
+      <label for="label">
+        Libellé
+      </label>
+
+      <input
+        id="label"
+        type="text"
+        name="label"
+        [(ngModel)]="label"
+        placeholder="Ex. Courses Carrefour"
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="amount">
+        Montant
+      </label>
+
+      <input
+        id="amount"
+        type="number"
+        name="amount"
+        [(ngModel)]="amount"
+        min="0"
+        step="0.01"
+        placeholder="0.00"
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="category">
+        Catégorie
+      </label>
+
+      <select
+        id="category"
+        name="category"
+        [(ngModel)]="categoryId"
+      >
+        <option
+          *ngFor="let category of categories"
+          [value]="category.id"
+        >
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="date">
+        Date
+      </label>
+
+      <input
+        id="date"
+        type="date"
+        name="date"
+        [(ngModel)]="date"
+      >
+    </div>
+
+    <div class="form-actions">
+
+      <button
+        type="submit"
+        class="add-button"
+      >
+        {{ editingExpenseId ? 'Enregistrer' : 'Ajouter la dépense' }}
+      </button>
+
+      <button
+        *ngIf="editingExpenseId"
+        type="button"
+        class="cancel-button"
+        (click)="cancelEdit()"
+      >
+        Annuler
+      </button>
+
+    </div>
+
+  </form>
+
+  <section
+    class="expenses-list"
+    *ngIf="currentMonth"
+  >
+
+    <div
+      class="expense-item"
+      *ngFor="let expense of currentMonth.expenses"
+    >
+
+      <div class="expense-item-info">
+
+        <strong>
+          {{ expense.label }}
+        </strong>
+
+        <span>
+          {{ getCategoryName(expense.categoryId) }}
+          ·
+          {{ expense.date }}
+        </span>
+
+      </div>
+
+      <strong class="expense-item-amount">
+        {{ expense.amount | number:'1.2-2' }} €
+      </strong>
+
+      <div class="expense-item-actions">
+
+        <button
+          type="button"
+          class="action-button"
+          (click)="editExpense(expense)"
+        >
+          Modifier
+        </button>
+
+        <button
+          type="button"
+          class="action-button action-button--danger"
+          (click)="deleteExpense(expense.id)"
+        >
+          Supprimer
+        </button>
+
+      </div>
+
+    </div>
+
+    <p
+      class="empty-message"
+      *ngIf="currentMonth.expenses.length === 0"
+    >
+      Aucune dépense enregistrée pour ce mois.
+    </p>
+
+  </section>
+
+</section>

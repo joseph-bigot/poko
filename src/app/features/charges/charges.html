@@ -1,0 +1,167 @@
+<section class="charges-page">
+
+  <div class="charges-header">
+    <div>
+      <p class="charges-eyebrow">Gestion du budget</p>
+
+      <h1>Charges</h1>
+
+      <p class="charges-description">
+        Gérez vos charges fixes du mois.
+      </p>
+    </div>
+  </div>
+
+  <form
+    class="charge-form"
+    (ngSubmit)="editingChargeId ? updateCharge() : addCharge()"
+  >
+
+    <div class="form-field">
+      <label for="label">
+        Libellé
+      </label>
+
+      <input
+        id="label"
+        type="text"
+        name="label"
+        [(ngModel)]="label"
+        placeholder="Ex. Loyer"
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="amount">
+        Montant
+      </label>
+
+      <input
+        id="amount"
+        type="number"
+        name="amount"
+        [(ngModel)]="amount"
+        min="0"
+        step="0.01"
+        placeholder="0.00"
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="dueDay">
+        Jour du prélèvement
+      </label>
+
+      <input
+        id="dueDay"
+        type="number"
+        name="dueDay"
+        [(ngModel)]="dueDay"
+        min="1"
+        max="31"
+        placeholder="Ex. 5"
+      >
+    </div>
+
+    <label class="checkbox-field">
+      <input
+        type="checkbox"
+        name="recurring"
+        [(ngModel)]="recurring"
+      >
+
+      <span>
+        Charge récurrente
+      </span>
+    </label>
+
+    <div class="form-actions">
+
+      <button
+        type="submit"
+        class="add-button"
+      >
+        {{ editingChargeId ? 'Enregistrer' : 'Ajouter la charge' }}
+      </button>
+
+      <button
+        *ngIf="editingChargeId"
+        type="button"
+        class="cancel-button"
+        (click)="cancelEdit()"
+      >
+        Annuler
+      </button>
+
+    </div>
+
+  </form>
+
+  <section
+    class="charges-list"
+    *ngIf="currentMonth"
+  >
+
+    <div
+      class="charge-item"
+      *ngFor="let charge of currentMonth.fixedExpenses"
+    >
+
+      <div class="charge-item-info">
+
+        <strong>
+          {{ charge.label }}
+        </strong>
+
+        <span>
+          <span *ngIf="charge.dueDay">
+            Prélèvement le {{ charge.dueDay }}
+          </span>
+
+          <span *ngIf="charge.dueDay && charge.recurring">
+            ·
+          </span>
+
+          <span *ngIf="charge.recurring">
+            Récurrent
+          </span>
+        </span>
+
+      </div>
+
+      <strong class="charge-item-amount">
+        {{ charge.amount | number:'1.2-2' }} €
+      </strong>
+
+      <div class="charge-item-actions">
+
+        <button
+          type="button"
+          class="action-button"
+          (click)="editCharge(charge)"
+        >
+          Modifier
+        </button>
+
+        <button
+          type="button"
+          class="action-button action-button--danger"
+          (click)="deleteCharge(charge.id)"
+        >
+          Supprimer
+        </button>
+
+      </div>
+
+    </div>
+
+    <p
+      class="empty-message"
+      *ngIf="currentMonth.fixedExpenses.length === 0"
+    >
+      Aucune charge fixe enregistrée pour ce mois.
+    </p>
+
+  </section>
+
+</section>

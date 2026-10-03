@@ -1,0 +1,158 @@
+<section class="revenus-page">
+
+  <div class="revenus-header">
+    <div>
+      <p class="revenus-eyebrow">Gestion du budget</p>
+
+      <h1>Revenus</h1>
+
+      <p class="revenus-description">
+        Ajoutez et gérez les revenus du mois.
+      </p>
+    </div>
+  </div>
+
+  <form
+    class="revenue-form"
+    (ngSubmit)="editingRevenueId ? updateRevenue() : addRevenue()"
+  >
+
+    <div class="form-field">
+      <label for="label">
+        Libellé
+      </label>
+
+      <input
+        id="label"
+        type="text"
+        name="label"
+        [(ngModel)]="label"
+        placeholder="Ex. Salaire"
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="amount">
+        Montant
+      </label>
+
+      <input
+        id="amount"
+        type="number"
+        name="amount"
+        [(ngModel)]="amount"
+        min="0"
+        step="0.01"
+        placeholder="0.00"
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="date">
+        Date
+      </label>
+
+      <input
+        id="date"
+        type="date"
+        name="date"
+        [(ngModel)]="date"
+      >
+    </div>
+
+    <label class="checkbox-field">
+      <input
+        type="checkbox"
+        name="recurring"
+        [(ngModel)]="recurring"
+      >
+
+      <span>
+        Revenu récurrent
+      </span>
+    </label>
+
+    <div class="form-actions">
+
+      <button
+        type="submit"
+        class="add-button"
+      >
+        {{ editingRevenueId ? 'Enregistrer' : 'Ajouter le revenu' }}
+      </button>
+
+      <button
+        *ngIf="editingRevenueId"
+        type="button"
+        class="cancel-button"
+        (click)="cancelEdit()"
+      >
+        Annuler
+      </button>
+
+    </div>
+
+  </form>
+
+  <section
+    class="revenues-list"
+    *ngIf="currentMonth"
+  >
+
+    <div
+      class="revenue-item"
+      *ngFor="let revenue of currentMonth.revenues"
+    >
+
+      <div class="revenue-item-info">
+
+        <strong>
+          {{ revenue.label }}
+        </strong>
+
+        <span>
+          {{ revenue.date }}
+
+          <span *ngIf="revenue.recurring">
+            · Récurrent
+          </span>
+        </span>
+
+      </div>
+
+      <strong class="revenue-item-amount">
+        {{ revenue.amount | number:'1.2-2' }} €
+      </strong>
+
+      <div class="revenue-item-actions">
+
+        <button
+          type="button"
+          class="action-button"
+          (click)="editRevenue(revenue)"
+        >
+          Modifier
+        </button>
+
+        <button
+          type="button"
+          class="action-button action-button--danger"
+          (click)="deleteRevenue(revenue.id)"
+        >
+          Supprimer
+        </button>
+
+      </div>
+
+    </div>
+
+    <p
+      class="empty-message"
+      *ngIf="currentMonth.revenues.length === 0"
+    >
+      Aucun revenu enregistré pour ce mois.
+    </p>
+
+  </section>
+
+</section>
