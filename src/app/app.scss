@@ -2,14 +2,14 @@
   min-height: 100vh;
 }
 
+/* En-tête */
+
 .app-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   height: 80px;
   padding: 0 40px;
-
   background: #ffffff;
   border-bottom: 1px solid #e5e7eb;
 }
@@ -18,7 +18,6 @@
   display: flex;
   align-items: center;
   gap: 12px;
-
   color: inherit;
   text-decoration: none;
 }
@@ -40,11 +39,116 @@
   color: #6b7280;
 }
 
+/* Navigation */
+
+.app-navigation {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  min-height: 58px;
+  padding: 8px 40px;
+
+  overflow-x: auto;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+
+  scrollbar-width: none;
+}
+
+.app-navigation::-webkit-scrollbar {
+  display: none;
+}
+
+.app-navigation-link {
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 40px;
+  padding: 0 15px;
+
+  border-radius: 12px;
+
+  color: #6b7280;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.app-navigation-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+
+  transition:
+    transform 160ms ease;
+}
+
+.app-navigation-link:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.app-navigation-link:hover .app-navigation-icon {
+  transform: scale(1.08);
+}
+
+.app-navigation-link:active {
+  transform: scale(0.97);
+}
+
+.app-navigation-link--active {
+  background: #1f2937;
+  color: #ffffff;
+}
+
+.app-navigation-link--active:hover {
+  background: #111827;
+  color: #ffffff;
+}
+
+.app-navigation-link--active .app-navigation-icon {
+  transform: scale(1.05);
+}
+
+/* Contenu */
+
 .app-content {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
   padding: 40px;
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+  .app-header {
+    padding: 0 24px;
+  }
+
+  .app-navigation {
+    padding: 8px 24px;
+  }
+
+  .app-content {
+    padding: 32px 24px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -64,6 +168,21 @@
 
   .app-header-month {
     font-size: 13px;
+  }
+
+  .app-navigation {
+    padding: 8px 20px;
+  }
+
+  .app-navigation-link {
+    min-height: 38px;
+    padding: 0 13px;
+    font-size: 13px;
+  }
+
+  .app-navigation-icon {
+    width: 17px;
+    height: 17px;
   }
 
   .app-content {

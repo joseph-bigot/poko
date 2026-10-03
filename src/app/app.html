@@ -2,14 +2,19 @@
 
   <header class="app-header">
 
-    <a class="app-brand" routerLink="/">
+    <a
+      class="app-brand"
+      routerLink="/"
+    >
       <img
         src="/logo_poko.png"
         alt="Poko"
         class="app-logo"
       >
 
-      <span class="app-brand-name">Poko</span>
+      <span class="app-brand-name">
+        Poko
+      </span>
     </a>
 
     <div class="app-header-month">
@@ -17,6 +22,259 @@
     </div>
 
   </header>
+
+  <nav class="app-navigation">
+
+    <a
+      routerLink="/budget"
+      routerLinkActive="app-navigation-link--active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="app-navigation-link"
+    >
+      <svg
+        class="app-navigation-icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <rect
+          x="3"
+          y="5"
+          width="18"
+          height="14"
+          rx="3"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+        <path
+          d="M16 12h5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+        <circle
+          cx="16"
+          cy="12"
+          r="1.3"
+          fill="currentColor"
+        />
+      </svg>
+
+      <span>Budget</span>
+    </a>
+
+    <a
+      routerLink="/revenus"
+      routerLinkActive="app-navigation-link--active"
+      class="app-navigation-link"
+    >
+      <svg
+        class="app-navigation-icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          d="M12 4v16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+        <path
+          d="M16 8.5c-.7-1.2-2-2-3.8-2-2.1 0-3.6 1.1-3.6 2.7 0 4.2 7.4 1.8 7.4 5.8 0 1.8-1.6 3-3.9 3-1.8 0-3.2-.7-4.1-2"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+      </svg>
+
+      <span>Revenus</span>
+    </a>
+
+    <a
+      routerLink="/depenses"
+      routerLinkActive="app-navigation-link--active"
+      class="app-navigation-link"
+    >
+      <svg
+        class="app-navigation-icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          d="M5 5h14v14H5z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M8 9h8M8 13h5M8 17h3"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+      </svg>
+
+      <span>Dépenses</span>
+    </a>
+
+    <a
+      routerLink="/charges"
+      routerLinkActive="app-navigation-link--active"
+      class="app-navigation-link"
+    >
+      <svg
+        class="app-navigation-icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <rect
+          x="4"
+          y="5"
+          width="16"
+          height="14"
+          rx="2"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+        <path
+          d="M8 9h8M8 13h8M8 17h5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+      </svg>
+
+      <span>Charges</span>
+    </a>
+
+    <a
+      routerLink="/synthese"
+      routerLinkActive="app-navigation-link--active"
+      class="app-navigation-link"
+    >
+      <svg
+        class="app-navigation-icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          d="M5 19V10M12 19V5M19 19v-7"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+
+      <span>Synthèse</span>
+    </a>
+
+    <a
+      routerLink="/mois"
+      routerLinkActive="app-navigation-link--active"
+      class="app-navigation-link"
+    >
+      <svg
+        class="app-navigation-icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <rect
+          x="4"
+          y="5"
+          width="16"
+          height="15"
+          rx="2"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+        <path
+          d="M8 3v4M16 3v4M4 10h16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+      </svg>
+
+      <span>Mes mois</span>
+    </a>
+
+    <a
+      routerLink="/objectifs"
+      routerLinkActive="app-navigation-link--active"
+      class="app-navigation-link"
+    >
+      <svg
+        class="app-navigation-icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="8"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+        <circle
+          cx="12"
+          cy="12"
+          r="4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+        <circle
+          cx="12"
+          cy="12"
+          r="1.5"
+          fill="currentColor"
+        />
+      </svg>
+
+      <span>Objectifs</span>
+    </a>
+
+    <a
+      routerLink="/bons-plans"
+      routerLinkActive="app-navigation-link--active"
+      class="app-navigation-link"
+    >
+      <svg
+        class="app-navigation-icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          d="M4 7.5A2.5 2.5 0 0 1 6.5 5H18l2 2v10l-2 2H6.5A2.5 2.5 0 0 1 4 16.5z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M8 12h8M12 8v8"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+      </svg>
+
+      <span>Bons plans</span>
+    </a>
+
+  </nav>
 
   <main class="app-content">
     <router-outlet />
