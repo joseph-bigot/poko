@@ -1,217 +1,282 @@
 .mois-page {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
+  width: 100%;
 }
 
 .mois-header {
+  margin-bottom: 32px;
+
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
 }
 
-.mois-title {
+.mois-eyebrow {
+  margin: 0 0 8px;
+  color: var(--poko-text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mois-page h1 {
   margin: 0;
   color: var(--poko-text);
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -1px;
+  font-size: 42px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
 }
 
-.mois-subtitle {
-  margin: 6px 0 0;
+.mois-description {
+  margin: 12px 0 0;
   color: var(--poko-text-secondary);
-  font-size: 15px;
+  font-size: 16px;
 }
 
-.mois-create {
-  min-height: 42px;
-  padding: 0 17px;
+.create-month-button {
+  flex-shrink: 0;
+
+  height: 48px;
+  padding: 0 20px;
+
   border: 0;
-  border-radius: 11px;
+  border-radius: 14px;
+
   background: var(--poko-primary);
   color: var(--poko-primary-text);
-  font-size: 13px;
-  font-weight: 700;
+
+  font-size: 14px;
+  font-weight: 600;
+
   cursor: pointer;
+
   transition:
-    background-color 160ms ease,
-    transform 160ms ease;
+    transform 160ms ease,
+    background-color 160ms ease;
 }
 
-.mois-create:hover {
+.create-month-button:hover {
   background: var(--poko-primary-hover);
+  transform: translateY(-1px);
 }
 
-.mois-create:active {
+.create-month-button:active {
   transform: scale(0.97);
 }
 
-.mois-list {
+.loading-message,
+.empty-message {
+  margin: 0;
+  padding: 40px;
+
+  color: var(--poko-text-secondary);
+  text-align: center;
+}
+
+.empty-button {
+  display: block;
+
+  height: 44px;
+  margin: 16px auto 0;
+  padding: 0 18px;
+
+  border: 0;
+  border-radius: 12px;
+
+  background: var(--poko-primary);
+  color: var(--poko-primary-text);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease;
+}
+
+.empty-button:hover {
+  background: var(--poko-primary-hover);
+  transform: translateY(-1px);
+}
+
+.months-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
-.mois-card {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  padding: 22px;
+.month-card {
+  padding: 24px;
+
   border: 1px solid var(--poko-border);
-  border-radius: 18px;
+  border-radius: 24px;
+
   background: var(--poko-surface);
   box-shadow: var(--poko-shadow);
+
   transition:
     background-color 160ms ease,
     border-color 160ms ease,
     transform 160ms ease;
 }
 
-.mois-card:hover {
+.month-card:hover {
   background: var(--poko-surface-secondary);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
-.mois-card--selected {
-  border-color: var(--poko-primary);
-}
-
-.mois-card-header {
+.month-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
+  gap: 16px;
+
+  margin-bottom: 20px;
 }
 
-.mois-card-name {
+.month-year {
   margin: 0;
+
   color: var(--poko-text);
-  font-size: 18px;
-  font-weight: 750;
+
+  font-size: 20px;
+  font-weight: 700;
   text-transform: capitalize;
 }
 
-.mois-card-status {
-  padding: 5px 8px;
-  border-radius: 7px;
-  background: var(--poko-surface-secondary);
-  color: var(--poko-text-secondary);
-  font-size: 11px;
-  font-weight: 650;
-}
+.delete-button {
+  width: 36px;
+  height: 36px;
+  padding: 0;
 
-.mois-card--selected .mois-card-status {
-  background: var(--poko-primary);
-  color: var(--poko-primary-text);
-}
-
-.mois-card-summary {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.mois-card-summary-item {
-  padding: 12px;
-  border-radius: 11px;
-  background: var(--poko-surface-secondary);
-}
-
-.mois-card-summary-label {
-  margin: 0 0 5px;
-  color: var(--poko-text-secondary);
-  font-size: 11px;
-}
-
-.mois-card-summary-value {
-  margin: 0;
-  color: var(--poko-text);
-  font-size: 14px;
-  font-weight: 750;
-}
-
-.mois-card-actions {
-  display: flex;
-  gap: 8px;
-  margin-top: auto;
-}
-
-.mois-action {
-  flex: 1;
-  min-height: 36px;
-  padding: 0 10px;
   border: 1px solid var(--poko-border);
-  border-radius: 9px;
+  border-radius: 10px;
+
   background: var(--poko-surface);
-  color: var(--poko-text-secondary);
-  font-size: 12px;
-  font-weight: 650;
+  color: var(--poko-danger);
+
+  font-size: 18px;
   cursor: pointer;
+
   transition:
     background-color 160ms ease,
-    color 160ms ease;
+    transform 160ms ease;
 }
 
-.mois-action:hover {
+.delete-button:hover {
   background: var(--poko-surface-secondary);
-  color: var(--poko-text);
+  transform: translateY(-1px);
 }
 
-.mois-action--primary {
-  background: var(--poko-primary);
-  border-color: var(--poko-primary);
-  color: var(--poko-primary-text);
+.month-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
 
-.mois-action--primary:hover {
-  background: var(--poko-primary-hover);
-  color: var(--poko-primary-text);
+.summary-item {
+  padding: 16px;
+
+  border-radius: 16px;
+
+  background: var(--poko-surface-secondary);
 }
 
-.mois-action--danger:hover {
-  color: var(--poko-danger);
-}
+.summary-item span {
+  display: block;
 
-.mois-empty {
-  padding: 36px 24px;
-  border: 1px dashed var(--poko-border);
-  border-radius: 18px;
-  background: var(--poko-surface);
+  margin-bottom: 6px;
+
   color: var(--poko-text-secondary);
-  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
 }
 
-@media (max-width: 1000px) {
-  .mois-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.summary-item strong {
+  display: block;
+
+  color: var(--poko-text);
+  font-size: 17px;
 }
 
-@media (max-width: 700px) {
-  .mois-page {
-    gap: 22px;
-  }
+.summary-item--available strong {
+  color: var(--poko-success);
+}
 
+.month-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  margin-top: 20px;
+}
+
+.month-info {
+  color: var(--poko-text-secondary);
+  font-size: 13px;
+}
+
+.open-button {
+  height: 40px;
+  padding: 0 16px;
+
+  border: 1px solid var(--poko-border);
+  border-radius: 11px;
+
+  background: var(--poko-surface);
+  color: var(--poko-text);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.open-button:hover {
+  background: var(--poko-surface-secondary);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
   .mois-header {
+    align-items: flex-start;
     flex-direction: column;
-    gap: 16px;
   }
 
-  .mois-title {
-    font-size: 28px;
-  }
-
-  .mois-create {
+  .create-month-button {
     width: 100%;
   }
 
-  .mois-list {
+  .months-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .mois-page h1 {
+    font-size: 34px;
+  }
+
+  .month-card {
+    padding: 20px;
+  }
+
+  .month-summary {
     grid-template-columns: 1fr;
   }
 
-  .mois-card {
-    padding: 19px;
+  .month-card-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .open-button {
+    width: 100%;
   }
 }

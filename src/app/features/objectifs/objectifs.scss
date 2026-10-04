@@ -1,237 +1,354 @@
 .objectifs-page {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
+  width: 100%;
 }
 
 .objectifs-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
+  margin-bottom: 32px;
 }
 
-.objectifs-title {
+.objectifs-eyebrow {
+  margin: 0 0 8px;
+  color: var(--poko-text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.objectifs-page h1 {
   margin: 0;
   color: var(--poko-text);
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -1px;
+  font-size: 42px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
 }
 
-.objectifs-subtitle {
-  margin: 6px 0 0;
+.objectifs-description {
+  margin: 12px 0 0;
   color: var(--poko-text-secondary);
-  font-size: 15px;
+  font-size: 16px;
 }
 
-.objectifs-form {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr auto;
-  gap: 12px;
-  align-items: end;
-  padding: 22px;
+.goal-form-card {
+  margin-bottom: 24px;
+  padding: 24px;
+
   border: 1px solid var(--poko-border);
-  border-radius: 18px;
+  border-radius: 28px;
+
   background: var(--poko-surface);
   box-shadow: var(--poko-shadow);
 }
 
-.objectifs-field {
+.goal-form-header {
+  margin-bottom: 20px;
+}
+
+.goal-form-header h2 {
+  margin: 0;
+  color: var(--poko-text);
+  font-size: 20px;
+}
+
+.goal-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  align-items: end;
+  gap: 16px;
+}
+
+.form-field {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 8px;
 }
 
-.objectifs-label {
-  color: var(--poko-text-secondary);
-  font-size: 12px;
-  font-weight: 650;
-}
-
-.objectifs-input {
-  width: 100%;
-  min-height: 42px;
-  padding: 0 13px;
-  border: 1px solid var(--poko-border);
-  border-radius: 11px;
-  outline: none;
-  background: var(--poko-surface);
+.form-field label {
   color: var(--poko-text);
   font-size: 14px;
+  font-weight: 600;
 }
 
-.objectifs-input:focus {
+.form-field input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+
+  border: 1px solid var(--poko-border);
+  border-radius: 14px;
+
+  background: var(--poko-surface-secondary);
+  color: var(--poko-text);
+
+  outline: none;
+
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.form-field input:focus {
   border-color: var(--poko-primary);
+  background: var(--poko-surface);
 }
 
-.objectifs-submit {
-  min-height: 42px;
-  padding: 0 17px;
+.input-with-suffix {
+  position: relative;
+}
+
+.input-with-suffix input {
+  padding-right: 42px;
+}
+
+.input-with-suffix::after {
+  content: '€';
+
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+
+  color: var(--poko-text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+
+  pointer-events: none;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.secondary-button,
+.primary-button {
+  height: 48px;
+  padding: 0 20px;
+
   border: 0;
-  border-radius: 11px;
+  border-radius: 14px;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease;
+}
+
+.primary-button {
   background: var(--poko-primary);
   color: var(--poko-primary-text);
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  transition:
-    background-color 160ms ease,
-    transform 160ms ease;
 }
 
-.objectifs-submit:hover {
+.primary-button:hover {
   background: var(--poko-primary-hover);
+  transform: translateY(-1px);
 }
 
-.objectifs-submit:active {
+.secondary-button {
+  background: var(--poko-surface-secondary);
+  color: var(--poko-text);
+}
+
+.secondary-button:hover {
+  background: var(--poko-border);
+}
+
+.primary-button:active,
+.secondary-button:active {
   transform: scale(0.97);
 }
 
-.objectifs-list {
+.empty-message {
+  margin: 0;
+  padding: 40px;
+
+  color: var(--poko-text-secondary);
+  text-align: center;
+}
+
+.goals-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
-.objectifs-card {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  padding: 22px;
+.goal-card {
+  padding: 24px;
+
   border: 1px solid var(--poko-border);
-  border-radius: 18px;
+  border-radius: 24px;
+
   background: var(--poko-surface);
   box-shadow: var(--poko-shadow);
+
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
 }
 
-.objectifs-card-header {
+.goal-card:hover {
+  background: var(--poko-surface-secondary);
+  transform: translateY(-1px);
+}
+
+.goal-card-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
+
+  margin-bottom: 20px;
 }
 
-.objectifs-card-name {
-  margin: 0;
+.goal-label {
   color: var(--poko-text);
   font-size: 17px;
-  font-weight: 750;
+  font-weight: 700;
 }
 
-.objectifs-card-amount {
-  flex-shrink: 0;
-  color: var(--poko-text);
+.goal-percentage {
+  color: var(--poko-text-secondary);
   font-size: 14px;
-  font-weight: 750;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-.objectifs-progress {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.objectifs-progress-track {
+.progress-track {
   width: 100%;
-  height: 9px;
+  height: 10px;
+
   overflow: hidden;
+
   border-radius: 999px;
+
   background: var(--poko-surface-secondary);
 }
 
-.objectifs-progress-bar {
+.progress-value {
   height: 100%;
+  max-width: 100%;
+
   border-radius: inherit;
-  background: var(--poko-success);
-  transition: width 300ms ease;
+
+  background: var(--poko-primary);
+
+  transition: width 250ms ease;
 }
 
-.objectifs-progress-meta {
+.goal-amounts {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
+
+  margin-top: 12px;
+
   color: var(--poko-text-secondary);
-  font-size: 12px;
+  font-size: 14px;
 }
 
-.objectifs-card-actions {
+.goal-remaining {
+  color: var(--poko-text);
+  font-weight: 600;
+}
+
+.goal-deadline {
+  margin-top: 16px;
+
+  color: var(--poko-text-secondary);
+  font-size: 13px;
+}
+
+.goal-card-footer {
   display: flex;
-  align-items: center;
   justify-content: flex-end;
   gap: 8px;
+
+  margin-top: 20px;
 }
 
-.objectifs-action {
-  min-height: 34px;
-  padding: 0 11px;
+.edit-button,
+.delete-button {
+  height: 36px;
+  padding: 0 12px;
+
   border: 1px solid var(--poko-border);
-  border-radius: 9px;
+  border-radius: 10px;
+
   background: var(--poko-surface);
-  color: var(--poko-text-secondary);
-  font-size: 12px;
-  font-weight: 650;
-  cursor: pointer;
-}
-
-.objectifs-action:hover {
-  background: var(--poko-surface-secondary);
   color: var(--poko-text);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
 }
 
-.objectifs-action--danger:hover {
+.edit-button:hover,
+.delete-button:hover {
+  background: var(--poko-surface-secondary);
+  transform: translateY(-1px);
+}
+
+.delete-button {
   color: var(--poko-danger);
 }
 
-.objectifs-empty {
-  padding: 36px 24px;
-  border: 1px dashed var(--poko-border);
-  border-radius: 18px;
-  background: var(--poko-surface);
-  color: var(--poko-text-secondary);
-  text-align: center;
-}
-
 @media (max-width: 1000px) {
-  .objectifs-form {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .goal-form {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .objectifs-submit {
+  .form-actions {
     width: 100%;
   }
 
-  .objectifs-list {
+  .primary-button,
+  .secondary-button {
+    flex: 1;
+  }
+
+  .goals-grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 700px) {
-  .objectifs-page {
-    gap: 22px;
+@media (max-width: 600px) {
+  .objectifs-page h1 {
+    font-size: 34px;
   }
 
-  .objectifs-header {
-    flex-direction: column;
-    gap: 16px;
+  .goal-form-card {
+    padding: 20px;
   }
 
-  .objectifs-title {
-    font-size: 28px;
-  }
-
-  .objectifs-form {
+  .goal-form {
     grid-template-columns: 1fr;
-    padding: 18px;
   }
 
-  .objectifs-card {
-    padding: 19px;
+  .goal-card {
+    padding: 20px;
   }
 
-  .objectifs-card-header {
+  .goal-card-header {
     flex-direction: column;
     gap: 8px;
+  }
+
+  .goal-amounts {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .goal-card-footer {
+    width: 100%;
+  }
+
+  .edit-button,
+  .delete-button {
+    flex: 1;
   }
 }

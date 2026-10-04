@@ -1,125 +1,185 @@
-.bons-plans-page {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+.deals-page {
+  width: 100%;
 }
 
-.bons-plans-header {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.deals-header {
+  margin-bottom: 36px;
 }
 
-.bons-plans-title {
-  margin: 0;
-  color: var(--poko-text);
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -1px;
+.deals-header-content {
+  max-width: 760px;
 }
 
-.bons-plans-subtitle {
-  margin: 0;
+.deals-eyebrow {
+  margin: 0 0 8px;
+
   color: var(--poko-text-secondary);
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.bons-plans-section {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.bons-plans-section-title {
+.deals-page h1 {
   margin: 0;
+
   color: var(--poko-text);
-  font-size: 19px;
-  font-weight: 750;
+
+  font-size: 42px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
 }
 
-.bons-plans-grid {
+.deals-description {
+  margin: 12px 0 0;
+
+  color: var(--poko-text-secondary);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.deals-section {
+  margin-top: 32px;
+}
+
+.deals-section-header {
+  margin-bottom: 16px;
+}
+
+.deals-section-header h2 {
+  margin: 0;
+
+  color: var(--poko-text);
+
+  font-size: 21px;
+  line-height: 1.2;
+}
+
+.deals-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
 
-.bons-plans-card {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  min-height: 150px;
+.deal-card {
+  min-height: 170px;
   padding: 22px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+
   border: 1px solid var(--poko-border);
-  border-radius: 18px;
+  border-radius: 22px;
+
   background: var(--poko-surface);
-  box-shadow: var(--poko-shadow);
-  color: inherit;
+  color: var(--poko-text);
+
   text-decoration: none;
+
+  box-shadow: var(--poko-shadow);
+
   transition:
-    background-color 180ms ease,
-    border-color 180ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
     transform 160ms ease,
     box-shadow 160ms ease;
 }
 
-.bons-plans-card:hover {
+.deal-card:hover {
   background: var(--poko-surface-secondary);
-  transform: translateY(-2px);
+  border-color: var(--poko-border);
+  transform: translateY(-3px);
 }
 
-.bons-plans-card:active {
-  transform: translateY(0) scale(0.99);
+.deal-card:active {
+  transform: scale(0.985);
 }
 
-.bons-plans-card-header {
+.deal-card-icon {
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
+  justify-content: center;
 
-.bons-plans-card-name {
-  margin: 0;
+  border-radius: 14px;
+
+  background: var(--poko-surface-secondary);
   color: var(--poko-text);
-  font-size: 17px;
-  font-weight: 750;
 }
 
-.bons-plans-card-arrow {
+.deal-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.deal-card-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.deal-card-content h3 {
+  margin: 0;
+
+  color: var(--poko-text);
+
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.deal-card-content p {
+  margin: 7px 0 0;
+
   color: var(--poko-text-secondary);
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.deal-card-arrow {
+  flex-shrink: 0;
+
+  color: var(--poko-text-secondary);
+
   font-size: 20px;
   line-height: 1;
+
   transition: transform 160ms ease;
 }
 
-.bons-plans-card:hover .bons-plans-card-arrow {
+.deal-card:hover .deal-card-arrow {
   transform: translateX(3px);
 }
 
-.bons-plans-card-description {
-  margin: 0;
-  color: var(--poko-text-secondary);
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-.bons-plans-card-link {
-  margin-top: auto;
-  color: var(--poko-text);
-  font-size: 12px;
-  font-weight: 650;
+@media (max-width: 1100px) {
+  .deals-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 700px) {
-  .bons-plans-page {
-    gap: 24px;
+  .deals-page h1 {
+    font-size: 34px;
   }
 
-  .bons-plans-title {
-    font-size: 28px;
-  }
-
-  .bons-plans-grid {
+  .deals-grid {
     grid-template-columns: 1fr;
+  }
+
+  .deal-card {
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .deal-card {
+    padding: 20px;
+  }
+
+  .deal-card-icon {
+    width: 42px;
+    height: 42px;
   }
 }
