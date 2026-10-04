@@ -25,93 +25,67 @@
   font-size: 15px;
 }
 
-.objectifs-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.objectifs-button {
-  padding: 11px 16px;
-  border: 1px solid var(--poko-border);
-  border-radius: 12px;
-  background: var(--poko-surface);
-  color: var(--poko-text);
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    background-color 160ms ease,
-    border-color 160ms ease,
-    transform 160ms ease;
-}
-
-.objectifs-button:hover {
-  background: var(--poko-surface-secondary);
-}
-
-.objectifs-button:active {
-  transform: scale(0.97);
-}
-
-.objectifs-button--primary {
-  border-color: var(--poko-primary);
-  background: var(--poko-primary);
-  color: var(--poko-primary-text);
-}
-
-.objectifs-button--primary:hover {
-  background: var(--poko-primary-hover);
-}
-
 .objectifs-form {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  padding: 24px;
+  grid-template-columns: 1.4fr 1fr 1fr auto;
+  gap: 12px;
+  align-items: end;
+  padding: 22px;
   border: 1px solid var(--poko-border);
-  border-radius: 20px;
+  border-radius: 18px;
   background: var(--poko-surface);
   box-shadow: var(--poko-shadow);
 }
 
-.objectifs-form-group {
+.objectifs-field {
   display: flex;
   flex-direction: column;
   gap: 7px;
 }
 
-.objectifs-form-group--full {
-  grid-column: 1 / -1;
-}
-
 .objectifs-label {
-  color: var(--poko-text);
-  font-size: 13px;
+  color: var(--poko-text-secondary);
+  font-size: 12px;
   font-weight: 650;
 }
 
 .objectifs-input {
   width: 100%;
-  min-height: 44px;
+  min-height: 42px;
   padding: 0 13px;
   border: 1px solid var(--poko-border);
   border-radius: 11px;
   outline: none;
   background: var(--poko-surface);
   color: var(--poko-text);
-  transition:
-    border-color 160ms ease,
-    box-shadow 160ms ease,
-    background-color 180ms ease;
+  font-size: 14px;
 }
 
 .objectifs-input:focus {
   border-color: var(--poko-primary);
-  box-shadow: 0 0 0 3px rgba(31, 41, 55, 0.08);
 }
 
-html[data-theme='dark'] .objectifs-input:focus {
-  box-shadow: 0 0 0 3px rgba(243, 244, 246, 0.08);
+.objectifs-submit {
+  min-height: 42px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 11px;
+  background: var(--poko-primary);
+  color: var(--poko-primary-text);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.objectifs-submit:hover {
+  background: var(--poko-primary-hover);
+}
+
+.objectifs-submit:active {
+  transform: scale(0.97);
 }
 
 .objectifs-list {
@@ -120,7 +94,7 @@ html[data-theme='dark'] .objectifs-input:focus {
   gap: 16px;
 }
 
-.objectifs-item {
+.objectifs-card {
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -131,31 +105,25 @@ html[data-theme='dark'] .objectifs-input:focus {
   box-shadow: var(--poko-shadow);
 }
 
-.objectifs-item-header {
+.objectifs-card-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
 }
 
-.objectifs-item-name {
+.objectifs-card-name {
   margin: 0;
   color: var(--poko-text);
   font-size: 17px;
   font-weight: 750;
 }
 
-.objectifs-item-deadline {
-  margin: 5px 0 0;
-  color: var(--poko-text-secondary);
-  font-size: 13px;
-}
-
-.objectifs-item-amount {
+.objectifs-card-amount {
   flex-shrink: 0;
   color: var(--poko-text);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 750;
 }
 
 .objectifs-progress {
@@ -164,7 +132,7 @@ html[data-theme='dark'] .objectifs-input:focus {
   gap: 8px;
 }
 
-.objectifs-progress-bar {
+.objectifs-progress-track {
   width: 100%;
   height: 9px;
   overflow: hidden;
@@ -172,63 +140,47 @@ html[data-theme='dark'] .objectifs-input:focus {
   background: var(--poko-surface-secondary);
 }
 
-.objectifs-progress-value {
+.objectifs-progress-bar {
   height: 100%;
   border-radius: inherit;
   background: var(--poko-success);
   transition: width 300ms ease;
 }
 
-.objectifs-progress-label {
+.objectifs-progress-meta {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
   color: var(--poko-text-secondary);
   font-size: 12px;
 }
 
-.objectifs-item-footer {
+.objectifs-card-actions {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  justify-content: flex-end;
+  gap: 8px;
 }
 
-.objectifs-item-remaining {
-  color: var(--poko-text-secondary);
-  font-size: 13px;
-}
-
-.objectifs-item-actions {
-  display: flex;
-  gap: 7px;
-}
-
-.objectifs-item-button {
-  width: 36px;
-  height: 36px;
-  padding: 0;
+.objectifs-action {
+  min-height: 34px;
+  padding: 0 11px;
   border: 1px solid var(--poko-border);
-  border-radius: 10px;
+  border-radius: 9px;
   background: var(--poko-surface);
   color: var(--poko-text-secondary);
+  font-size: 12px;
+  font-weight: 650;
   cursor: pointer;
-  transition:
-    background-color 160ms ease,
-    color 160ms ease,
-    transform 160ms ease;
 }
 
-.objectifs-item-button:hover {
+.objectifs-action:hover {
   background: var(--poko-surface-secondary);
   color: var(--poko-text);
 }
 
-.objectifs-item-button:active {
-  transform: scale(0.94);
-}
-
-.objectifs-item-button--delete:hover {
+.objectifs-action--danger:hover {
   color: var(--poko-danger);
 }
 
@@ -241,40 +193,45 @@ html[data-theme='dark'] .objectifs-input:focus {
   text-align: center;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
+  .objectifs-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .objectifs-submit {
+    width: 100%;
+  }
+
   .objectifs-list {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 700px) {
+  .objectifs-page {
+    gap: 22px;
+  }
+
   .objectifs-header {
     flex-direction: column;
+    gap: 16px;
   }
 
-  .objectifs-actions {
-    width: 100%;
-  }
-
-  .objectifs-actions .objectifs-button {
-    flex: 1;
+  .objectifs-title {
+    font-size: 28px;
   }
 
   .objectifs-form {
     grid-template-columns: 1fr;
+    padding: 18px;
   }
 
-  .objectifs-form-group--full {
-    grid-column: auto;
+  .objectifs-card {
+    padding: 19px;
   }
 
-  .objectifs-item-header,
-  .objectifs-item-footer {
-    align-items: flex-start;
+  .objectifs-card-header {
     flex-direction: column;
-  }
-
-  .objectifs-item-actions {
-    width: 100%;
+    gap: 8px;
   }
 }

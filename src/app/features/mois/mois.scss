@@ -25,42 +25,27 @@
   font-size: 15px;
 }
 
-.mois-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.mois-button {
-  padding: 11px 16px;
-  border: 1px solid var(--poko-border);
-  border-radius: 12px;
-  background: var(--poko-surface);
-  color: var(--poko-text);
-  font-size: 14px;
-  font-weight: 600;
+.mois-create {
+  min-height: 42px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 11px;
+  background: var(--poko-primary);
+  color: var(--poko-primary-text);
+  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
   transition:
     background-color 160ms ease,
-    border-color 160ms ease,
     transform 160ms ease;
 }
 
-.mois-button:hover {
-  background: var(--poko-surface-secondary);
-}
-
-.mois-button:active {
-  transform: scale(0.97);
-}
-
-.mois-button--primary {
-  border-color: var(--poko-primary);
-  background: var(--poko-primary);
-  color: var(--poko-primary-text);
-}
-
-.mois-button--primary:hover {
+.mois-create:hover {
   background: var(--poko-primary-hover);
+}
+
+.mois-create:active {
+  transform: scale(0.97);
 }
 
 .mois-list {
@@ -69,7 +54,7 @@
   gap: 16px;
 }
 
-.mois-item {
+.mois-card {
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -79,30 +64,28 @@
   background: var(--poko-surface);
   box-shadow: var(--poko-shadow);
   transition:
-    background-color 180ms ease,
-    border-color 180ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
     transform 160ms ease;
 }
 
-.mois-item:hover {
+.mois-card:hover {
+  background: var(--poko-surface-secondary);
   transform: translateY(-2px);
 }
 
-.mois-item--selected {
+.mois-card--selected {
   border-color: var(--poko-primary);
-  box-shadow:
-    0 0 0 1px var(--poko-primary),
-    var(--poko-shadow);
 }
 
-.mois-item-header {
+.mois-card-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 14px;
 }
 
-.mois-item-name {
+.mois-card-name {
   margin: 0;
   color: var(--poko-text);
   font-size: 18px;
@@ -110,78 +93,84 @@
   text-transform: capitalize;
 }
 
-.mois-item-status {
-  flex-shrink: 0;
-  padding: 5px 9px;
-  border-radius: 999px;
+.mois-card-status {
+  padding: 5px 8px;
+  border-radius: 7px;
   background: var(--poko-surface-secondary);
   color: var(--poko-text-secondary);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 650;
 }
 
-.mois-item--selected .mois-item-status {
+.mois-card--selected .mois-card-status {
   background: var(--poko-primary);
   color: var(--poko-primary-text);
 }
 
-.mois-item-summary {
+.mois-card-summary {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 
-.mois-item-stat {
+.mois-card-summary-item {
   padding: 12px;
-  border-radius: 12px;
+  border-radius: 11px;
   background: var(--poko-surface-secondary);
 }
 
-.mois-item-stat-label {
-  display: block;
-  margin-bottom: 4px;
+.mois-card-summary-label {
+  margin: 0 0 5px;
   color: var(--poko-text-secondary);
   font-size: 11px;
 }
 
-.mois-item-stat-value {
+.mois-card-summary-value {
+  margin: 0;
   color: var(--poko-text);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 750;
 }
 
-.mois-item-actions {
+.mois-card-actions {
   display: flex;
   gap: 8px;
   margin-top: auto;
 }
 
-.mois-item-button {
+.mois-action {
   flex: 1;
-  min-height: 38px;
-  padding: 0 12px;
+  min-height: 36px;
+  padding: 0 10px;
   border: 1px solid var(--poko-border);
-  border-radius: 10px;
+  border-radius: 9px;
   background: var(--poko-surface);
-  color: var(--poko-text);
-  font-size: 13px;
+  color: var(--poko-text-secondary);
+  font-size: 12px;
   font-weight: 650;
   cursor: pointer;
   transition:
     background-color 160ms ease,
-    color 160ms ease,
-    transform 160ms ease;
+    color 160ms ease;
 }
 
-.mois-item-button:hover {
+.mois-action:hover {
   background: var(--poko-surface-secondary);
+  color: var(--poko-text);
 }
 
-.mois-item-button:active {
-  transform: scale(0.97);
+.mois-action--primary {
+  background: var(--poko-primary);
+  border-color: var(--poko-primary);
+  color: var(--poko-primary-text);
 }
 
-.mois-item-button--delete:hover {
+.mois-action--primary:hover {
+  background: var(--poko-primary-hover);
+  color: var(--poko-primary-text);
+}
+
+.mois-action--danger:hover {
   color: var(--poko-danger);
 }
 
@@ -201,19 +190,28 @@
 }
 
 @media (max-width: 700px) {
+  .mois-page {
+    gap: 22px;
+  }
+
   .mois-header {
     flex-direction: column;
+    gap: 16px;
   }
 
-  .mois-actions {
+  .mois-title {
+    font-size: 28px;
+  }
+
+  .mois-create {
     width: 100%;
-  }
-
-  .mois-actions .mois-button {
-    flex: 1;
   }
 
   .mois-list {
     grid-template-columns: 1fr;
+  }
+
+  .mois-card {
+    padding: 19px;
   }
 }

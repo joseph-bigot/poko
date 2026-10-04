@@ -25,190 +25,211 @@
   font-size: 15px;
 }
 
-.revenus-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.revenus-button {
-  padding: 11px 16px;
-  border: 1px solid var(--poko-border);
-  border-radius: 12px;
-  background: var(--poko-surface);
-  color: var(--poko-text);
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    background-color 160ms ease,
-    border-color 160ms ease,
-    transform 160ms ease;
-}
-
-.revenus-button:hover {
-  background: var(--poko-surface-secondary);
-}
-
-.revenus-button:active {
-  transform: scale(0.97);
-}
-
-.revenus-button--primary {
-  border-color: var(--poko-primary);
-  background: var(--poko-primary);
-  color: var(--poko-primary-text);
-}
-
-.revenus-button--primary:hover {
-  background: var(--poko-primary-hover);
-}
-
 .revenus-form {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  padding: 24px;
+  grid-template-columns: 1.4fr 1fr 1fr auto;
+  gap: 12px;
+  align-items: end;
+  padding: 22px;
   border: 1px solid var(--poko-border);
-  border-radius: 20px;
+  border-radius: 18px;
   background: var(--poko-surface);
   box-shadow: var(--poko-shadow);
 }
 
-.revenus-form-group {
+.revenus-field {
   display: flex;
   flex-direction: column;
   gap: 7px;
 }
 
-.revenus-form-group--full {
-  grid-column: 1 / -1;
-}
-
 .revenus-label {
-  color: var(--poko-text);
-  font-size: 13px;
+  color: var(--poko-text-secondary);
+  font-size: 12px;
   font-weight: 650;
 }
 
 .revenus-input,
 .revenus-select {
   width: 100%;
-  min-height: 44px;
+  min-height: 42px;
   padding: 0 13px;
   border: 1px solid var(--poko-border);
   border-radius: 11px;
   outline: none;
   background: var(--poko-surface);
   color: var(--poko-text);
+  font-size: 14px;
   transition:
     border-color 160ms ease,
-    box-shadow 160ms ease,
-    background-color 180ms ease;
+    background-color 160ms ease;
 }
 
 .revenus-input:focus,
 .revenus-select:focus {
   border-color: var(--poko-primary);
-  box-shadow: 0 0 0 3px rgba(31, 41, 55, 0.08);
-}
-
-html[data-theme='dark'] .revenus-input:focus,
-html[data-theme='dark'] .revenus-select:focus {
-  box-shadow: 0 0 0 3px rgba(243, 244, 246, 0.08);
 }
 
 .revenus-checkbox {
   display: flex;
   align-items: center;
-  gap: 9px;
-  color: var(--poko-text);
-  font-size: 14px;
+  gap: 8px;
+  min-height: 42px;
+  color: var(--poko-text-secondary);
+  font-size: 13px;
   cursor: pointer;
 }
 
 .revenus-checkbox input {
-  width: 17px;
-  height: 17px;
+  width: 16px;
+  height: 16px;
   accent-color: var(--poko-primary);
+}
+
+.revenus-submit {
+  min-height: 42px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 11px;
+  background: var(--poko-primary);
+  color: var(--poko-primary-text);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.revenus-submit:hover {
+  background: var(--poko-primary-hover);
+}
+
+.revenus-submit:active {
+  transform: scale(0.97);
+}
+
+.revenus-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.revenus-section-title {
+  margin: 0;
+  color: var(--poko-text);
+  font-size: 19px;
+  font-weight: 750;
 }
 
 .revenus-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .revenus-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 18px 20px;
+  gap: 18px;
+  padding: 17px 18px;
   border: 1px solid var(--poko-border);
-  border-radius: 16px;
+  border-radius: 14px;
   background: var(--poko-surface);
-  box-shadow: var(--poko-shadow);
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.revenus-item:hover {
+  background: var(--poko-surface-secondary);
 }
 
 .revenus-item-main {
   min-width: 0;
 }
 
-.revenus-item-label {
+.revenus-item-name {
   margin: 0;
   color: var(--poko-text);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
 }
 
 .revenus-item-meta {
-  margin: 5px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 5px;
   color: var(--poko-text-secondary);
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .revenus-item-amount {
   flex-shrink: 0;
   color: var(--poko-success);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 750;
 }
 
 .revenus-item-actions {
   display: flex;
+  align-items: center;
   gap: 7px;
 }
 
-.revenus-item-button {
-  width: 36px;
-  height: 36px;
-  padding: 0;
+.revenus-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  min-height: 34px;
+  padding: 0 10px;
   border: 1px solid var(--poko-border);
-  border-radius: 10px;
+  border-radius: 9px;
   background: var(--poko-surface);
   color: var(--poko-text-secondary);
   cursor: pointer;
   transition:
     background-color 160ms ease,
-    color 160ms ease,
-    transform 160ms ease;
+    color 160ms ease;
 }
 
-.revenus-item-button:hover {
+.revenus-action:hover {
   background: var(--poko-surface-secondary);
   color: var(--poko-text);
 }
 
-.revenus-item-button:active {
-  transform: scale(0.94);
-}
-
-.revenus-item-button--delete:hover {
+.revenus-action--danger:hover {
   color: var(--poko-danger);
 }
 
+.revenus-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 22px;
+  border: 1px solid var(--poko-border);
+  border-radius: 16px;
+  background: var(--poko-surface);
+}
+
+.revenus-total-label {
+  color: var(--poko-text-secondary);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.revenus-total-value {
+  color: var(--poko-success);
+  font-size: 21px;
+  font-weight: 800;
+}
+
 .revenus-empty {
-  padding: 36px 24px;
+  padding: 34px 24px;
   border: 1px dashed var(--poko-border);
   border-radius: 18px;
   background: var(--poko-surface);
@@ -216,25 +237,33 @@ html[data-theme='dark'] .revenus-select:focus {
   text-align: center;
 }
 
-@media (max-width: 700px) {
-  .revenus-header {
-    flex-direction: column;
+@media (max-width: 1000px) {
+  .revenus-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .revenus-actions {
+  .revenus-submit {
     width: 100%;
   }
+}
 
-  .revenus-actions .revenus-button {
-    flex: 1;
+@media (max-width: 700px) {
+  .revenus-page {
+    gap: 22px;
+  }
+
+  .revenus-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .revenus-title {
+    font-size: 28px;
   }
 
   .revenus-form {
     grid-template-columns: 1fr;
-  }
-
-  .revenus-form-group--full {
-    grid-column: auto;
+    padding: 18px;
   }
 
   .revenus-item {
@@ -244,5 +273,11 @@ html[data-theme='dark'] .revenus-select:focus {
 
   .revenus-item-actions {
     width: 100%;
+  }
+
+  .revenus-total {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
   }
 }
