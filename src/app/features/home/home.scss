@@ -26,10 +26,10 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
 
-  color: #6b7280;
+  color: var(--poko-text-secondary);
 }
 
-h1 {
+.home h1 {
   margin: 0;
 
   font-size: 42px;
@@ -37,7 +37,7 @@ h1 {
   font-weight: 800;
   letter-spacing: -1.8px;
 
-  color: #111827;
+  color: var(--poko-text);
 }
 
 .home-description {
@@ -48,7 +48,7 @@ h1 {
   font-size: 17px;
   line-height: 1.5;
 
-  color: #6b7280;
+  color: var(--poko-text-secondary);
 }
 
 .home-introduction-logo {
@@ -63,10 +63,10 @@ h1 {
 
   border-radius: 28px;
 
-  background: #ffffff;
-  box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.07),
-    0 2px 6px rgba(0, 0, 0, 0.04);
+  background: var(--poko-surface);
+  border: 1px solid var(--poko-border);
+
+  box-shadow: var(--poko-shadow);
 }
 
 .home-introduction-logo img {
@@ -103,24 +103,23 @@ h1 {
 
   overflow: hidden;
 
-  border: 1px solid rgba(17, 24, 39, 0.05);
+  border: 1px solid var(--poko-border);
   border-radius: 26px;
 
-  background: #ffffff;
+  background: var(--poko-surface);
 
-  color: #111827;
+  color: var(--poko-text);
   text-decoration: none;
 
-  box-shadow:
-    0 8px 28px rgba(0, 0, 0, 0.055),
-    0 2px 5px rgba(0, 0, 0, 0.025);
+  box-shadow: var(--poko-shadow);
 
   cursor: pointer;
 
   transition:
     transform 180ms ease,
     box-shadow 180ms ease,
-    border-color 180ms ease;
+    border-color 180ms ease,
+    background-color 180ms ease;
 }
 
 .home-tile::after {
@@ -136,17 +135,19 @@ h1 {
 
   border-radius: 50%;
 
-  background: rgba(17, 24, 39, 0.025);
+  background: var(--poko-surface-secondary);
+
+  opacity: 0.7;
 
   transition:
     transform 180ms ease,
-    background 180ms ease;
+    opacity 180ms ease;
 }
 
 .home-tile:hover {
   transform: translateY(-4px);
 
-  border-color: rgba(17, 24, 39, 0.09);
+  border-color: var(--poko-border);
 
   box-shadow:
     0 16px 38px rgba(0, 0, 0, 0.09),
@@ -155,8 +156,7 @@ h1 {
 
 .home-tile:hover::after {
   transform: scale(1.25);
-
-  background: rgba(17, 24, 39, 0.04);
+  opacity: 1;
 }
 
 .home-tile:active {
@@ -170,10 +170,10 @@ h1 {
 
   min-height: 250px;
 
-  background: #1f2937;
-  color: #ffffff;
+  background: var(--poko-primary);
+  color: var(--poko-primary-text);
 
-  border-color: #1f2937;
+  border-color: var(--poko-primary);
 
   box-shadow:
     0 14px 36px rgba(31, 41, 55, 0.18),
@@ -187,19 +187,15 @@ h1 {
   right: -80px;
   top: -90px;
 
-  background: rgba(255, 255, 255, 0.055);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .home-tile--large:hover {
-  border-color: #111827;
-
-  box-shadow:
-    0 20px 44px rgba(31, 41, 55, 0.22),
-    0 5px 12px rgba(31, 41, 55, 0.1);
+  border-color: var(--poko-primary-hover);
 }
 
 .home-tile--large:hover::after {
-  background: rgba(255, 255, 255, 0.075);
+  background: rgba(255, 255, 255, 0.11);
 }
 
 /* Icônes */
@@ -217,15 +213,17 @@ h1 {
 
   border-radius: 14px;
 
-  background: #f3f4f6;
-  color: #374151;
+  background: var(--poko-surface-secondary);
+  color: var(--poko-text);
 
   transition:
     transform 180ms ease,
-    background 180ms ease;
+    background-color 180ms ease;
 }
 
 .tile-icon svg {
+  display: block;
+
   width: 22px;
   height: 22px;
 }
@@ -236,7 +234,7 @@ h1 {
 
 .home-tile--large .tile-icon {
   background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
+  color: var(--poko-primary-text);
 }
 
 /* Contenu */
@@ -252,6 +250,8 @@ h1 {
 }
 
 .tile-title {
+  color: var(--poko-text);
+
   font-size: 21px;
   line-height: 1.2;
   font-weight: 750;
@@ -264,11 +264,15 @@ h1 {
   font-size: 14px;
   line-height: 1.45;
 
-  color: #6b7280;
+  color: var(--poko-text-secondary);
+}
+
+.home-tile--large .tile-title {
+  color: var(--poko-primary-text);
 }
 
 .home-tile--large .tile-description {
-  color: #d1d5db;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .tile-arrow {
@@ -292,13 +296,18 @@ h1 {
   font-size: 20px;
   line-height: 1;
 
-  color: #ffffff;
+  color: var(--poko-primary-text);
 
   opacity: 0.85;
 
   transition:
     transform 180ms ease,
     opacity 180ms ease;
+}
+
+.home-tile:not(.home-tile--large) .tile-arrow {
+  background: var(--poko-surface-secondary);
+  color: var(--poko-text);
 }
 
 .home-tile:hover .tile-arrow {
@@ -338,7 +347,7 @@ h1 {
     height: 54px;
   }
 
-  h1 {
+  .home h1 {
     font-size: 34px;
   }
 
@@ -381,7 +390,7 @@ h1 {
     display: none;
   }
 
-  h1 {
+  .home h1 {
     font-size: 32px;
   }
 }

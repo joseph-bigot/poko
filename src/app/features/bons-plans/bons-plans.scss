@@ -12,7 +12,6 @@
 
 .deals-eyebrow {
   margin: 0 0 8px;
-
   color: var(--poko-text-secondary);
   font-size: 14px;
   font-weight: 600;
@@ -20,9 +19,7 @@
 
 .deals-page h1 {
   margin: 0;
-
   color: var(--poko-text);
-
   font-size: 42px;
   line-height: 1.1;
   letter-spacing: -1.5px;
@@ -30,7 +27,6 @@
 
 .deals-description {
   margin: 12px 0 0;
-
   color: var(--poko-text-secondary);
   font-size: 16px;
   line-height: 1.5;
@@ -46,11 +42,16 @@
 
 .deals-section-header h2 {
   margin: 0;
-
   color: var(--poko-text);
-
   font-size: 21px;
   line-height: 1.2;
+}
+
+.deals-section-header p {
+  margin: 6px 0 0;
+  color: var(--poko-text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .deals-grid {
@@ -60,7 +61,7 @@
 }
 
 .deal-card {
-  min-height: 170px;
+  min-height: 150px;
   padding: 22px;
 
   display: flex;
@@ -111,6 +112,7 @@
 }
 
 .deal-card-icon svg {
+  display: block;
   width: 22px;
   height: 22px;
 }
@@ -122,35 +124,74 @@
 
 .deal-card-content h3 {
   margin: 0;
-
   color: var(--poko-text);
-
   font-size: 17px;
   font-weight: 700;
 }
 
 .deal-card-content p {
   margin: 7px 0 0;
-
   color: var(--poko-text-secondary);
-
   font-size: 13px;
   line-height: 1.5;
 }
 
 .deal-card-arrow {
   flex-shrink: 0;
-
   color: var(--poko-text-secondary);
-
   font-size: 20px;
   line-height: 1;
-
   transition: transform 160ms ease;
 }
 
 .deal-card:hover .deal-card-arrow {
-  transform: translateX(3px);
+  transform: translate(3px, -3px);
+}
+
+/* Encadré d'information */
+
+.deals-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+
+  margin-top: 32px;
+  padding: 18px 20px;
+
+  border: 1px solid var(--poko-border);
+  border-radius: 18px;
+
+  background: var(--poko-surface);
+  box-shadow: var(--poko-shadow);
+}
+
+.deals-info-icon {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: var(--poko-surface-secondary);
+  color: var(--poko-text-secondary);
+}
+
+.deals-info-icon svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.deals-info p {
+  margin: 0;
+  color: var(--poko-text-secondary);
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 @media (max-width: 1100px) {
@@ -169,7 +210,7 @@
   }
 
   .deal-card {
-    min-height: 150px;
+    min-height: 140px;
   }
 }
 
@@ -181,5 +222,9 @@
   .deal-card-icon {
     width: 42px;
     height: 42px;
+  }
+
+  .deals-info {
+    padding: 16px;
   }
 }
