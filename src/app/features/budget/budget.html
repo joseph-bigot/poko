@@ -2,7 +2,7 @@
 
   <div class="budget-header">
 
-    <div>
+    <div class="budget-header-content">
       <p class="budget-eyebrow">
         Budget actuel
       </p>
@@ -18,7 +18,7 @@
       <p class="budget-description">
         {{
           currentMonth
-            ? 'Situation financière du mois sélectionné.'
+            ? 'Votre situation financière pour le mois sélectionné.'
             : loadingMessage
         }}
       </p>
@@ -42,9 +42,15 @@
 
     <article class="budget-card">
 
-      <span class="budget-card-label">
-        Revenus
-      </span>
+      <div class="budget-card-top">
+        <span class="budget-card-label">
+          Revenus
+        </span>
+
+        <span class="budget-card-icon">
+          €
+        </span>
+      </div>
 
       <strong class="budget-card-value">
         {{
@@ -54,13 +60,23 @@
         €
       </strong>
 
+      <span class="budget-card-description">
+        Total des revenus
+      </span>
+
     </article>
 
     <article class="budget-card">
 
-      <span class="budget-card-label">
-        Charges fixes
-      </span>
+      <div class="budget-card-top">
+        <span class="budget-card-label">
+          Charges fixes
+        </span>
+
+        <span class="budget-card-icon">
+          =
+        </span>
+      </div>
 
       <strong class="budget-card-value">
         {{
@@ -70,13 +86,23 @@
         €
       </strong>
 
+      <span class="budget-card-description">
+        Charges récurrentes
+      </span>
+
     </article>
 
     <article class="budget-card">
 
-      <span class="budget-card-label">
-        Dépenses
-      </span>
+      <div class="budget-card-top">
+        <span class="budget-card-label">
+          Dépenses
+        </span>
+
+        <span class="budget-card-icon">
+          −
+        </span>
+      </div>
 
       <strong class="budget-card-value">
         {{
@@ -86,13 +112,23 @@
         €
       </strong>
 
+      <span class="budget-card-description">
+        Dépenses du mois
+      </span>
+
     </article>
 
     <article class="budget-card">
 
-      <span class="budget-card-label">
-        Épargne
-      </span>
+      <div class="budget-card-top">
+        <span class="budget-card-label">
+          Épargne
+        </span>
+
+        <span class="budget-card-icon">
+          +
+        </span>
+      </div>
 
       <strong class="budget-card-value">
         {{
@@ -101,6 +137,10 @@
         }}
         €
       </strong>
+
+      <span class="budget-card-description">
+        Montant consacré aux objectifs
+      </span>
 
     </article>
 
@@ -111,7 +151,8 @@
     *ngIf="currentMonth"
   >
 
-    <div>
+    <div class="budget-balance-content">
+
       <span class="budget-balance-label">
         Reste disponible
       </span>
@@ -119,6 +160,7 @@
       <p class="budget-balance-description">
         Revenus − charges fixes − dépenses − épargne
       </p>
+
     </div>
 
     <strong class="budget-balance-value">

@@ -5,6 +5,8 @@ import {
   RouterOutlet,
 } from '@angular/router';
 
+import { ThemeService } from './services/theme';
+
 @Component({
   imports: [
     RouterLink,
@@ -17,4 +19,8 @@ import {
 })
 export class App {
   protected readonly title = signal('poko');
+
+  constructor(
+    public themeService: ThemeService
+  ) {}
 }

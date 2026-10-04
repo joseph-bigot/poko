@@ -1,12 +1,31 @@
+.home {
+  width: 100%;
+}
+
+/* Introduction */
+
 .home-introduction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+
   margin-bottom: 40px;
+  padding: 8px 4px;
+}
+
+.home-introduction-text {
+  min-width: 0;
 }
 
 .home-eyebrow {
   margin: 0 0 8px;
 
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
   color: #6b7280;
 }
 
@@ -14,75 +33,285 @@ h1 {
   margin: 0;
 
   font-size: 42px;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -1.8px;
+
+  color: #111827;
 }
 
 .home-description {
-  margin: 16px 0 0;
+  max-width: 600px;
+
+  margin: 14px 0 0;
 
   font-size: 17px;
+  line-height: 1.5;
+
   color: #6b7280;
 }
 
-.home-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.home-tile {
+.home-introduction-logo {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
 
-  min-height: 190px;
-  padding: 28px;
+  width: 92px;
+  height: 92px;
 
-  border: 0;
+  flex-shrink: 0;
+
   border-radius: 28px;
 
   background: #ffffff;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.07),
+    0 2px 6px rgba(0, 0, 0, 0.04);
+}
 
-  text-align: left;
+.home-introduction-logo img {
+  width: 72px;
+  height: 72px;
+
+  object-fit: contain;
+}
+
+/* Grille */
+
+.home-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+/* Tuiles */
+
+.home-tile {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  min-height: 205px;
+
+  padding: 26px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(17, 24, 39, 0.05);
+  border-radius: 26px;
+
+  background: #ffffff;
+
+  color: #111827;
+  text-decoration: none;
+
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.055),
+    0 2px 5px rgba(0, 0, 0, 0.025);
+
   cursor: pointer;
 
   transition:
-    transform 160ms ease,
-    box-shadow 160ms ease;
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.home-tile::after {
+  content: '';
+
+  position: absolute;
+
+  width: 130px;
+  height: 130px;
+
+  right: -45px;
+  top: -45px;
+
+  border-radius: 50%;
+
+  background: rgba(17, 24, 39, 0.025);
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
 }
 
 .home-tile:hover {
-  transform: scale(1.03);
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+
+  border-color: rgba(17, 24, 39, 0.09);
+
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.09),
+    0 4px 8px rgba(0, 0, 0, 0.035);
+}
+
+.home-tile:hover::after {
+  transform: scale(1.25);
+
+  background: rgba(17, 24, 39, 0.04);
 }
 
 .home-tile:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
+
+/* Grande tuile Budget */
 
 .home-tile--large {
   grid-column: span 2;
+
+  min-height: 250px;
+
+  background: #1f2937;
+  color: #ffffff;
+
+  border-color: #1f2937;
+
+  box-shadow:
+    0 14px 36px rgba(31, 41, 55, 0.18),
+    0 4px 10px rgba(31, 41, 55, 0.08);
+}
+
+.home-tile--large::after {
+  width: 220px;
+  height: 220px;
+
+  right: -80px;
+  top: -90px;
+
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.home-tile--large:hover {
+  border-color: #111827;
+
+  box-shadow:
+    0 20px 44px rgba(31, 41, 55, 0.22),
+    0 5px 12px rgba(31, 41, 55, 0.1);
+}
+
+.home-tile--large:hover::after {
+  background: rgba(255, 255, 255, 0.075);
+}
+
+/* Icônes */
+
+.tile-icon {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 14px;
+
+  background: #f3f4f6;
+  color: #374151;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.tile-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.home-tile:hover .tile-icon {
+  transform: scale(1.06);
+}
+
+.home-tile--large .tile-icon {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+/* Contenu */
+
+.tile-content {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  max-width: 85%;
 }
 
 .tile-title {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.2;
+  font-weight: 750;
   letter-spacing: -0.5px;
 }
 
 .tile-description {
-  margin-top: 8px;
+  margin-top: 7px;
 
   font-size: 14px;
+  line-height: 1.45;
+
   color: #6b7280;
 }
 
-@media (max-width: 900px) {
+.home-tile--large .tile-description {
+  color: #d1d5db;
+}
+
+.tile-arrow {
+  position: absolute;
+  z-index: 2;
+
+  right: 26px;
+  bottom: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  font-size: 20px;
+  line-height: 1;
+
+  color: #ffffff;
+
+  opacity: 0.85;
+
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.home-tile:hover .tile-arrow {
+  transform: translateX(3px);
+  opacity: 1;
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
   .home-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
   }
 
   .home-tile--large {
@@ -90,24 +319,69 @@ h1 {
   }
 }
 
-@media (max-width: 600px) {
-  .app-header {
-    padding: 0 20px;
+@media (max-width: 650px) {
+  .home-introduction {
+    align-items: flex-start;
+
+    margin-bottom: 30px;
   }
 
-  .app-content {
-    padding: 24px 20px;
+  .home-introduction-logo {
+    width: 68px;
+    height: 68px;
+
+    border-radius: 20px;
+  }
+
+  .home-introduction-logo img {
+    width: 54px;
+    height: 54px;
   }
 
   h1 {
     font-size: 34px;
   }
 
+  .home-description {
+    font-size: 15px;
+  }
+
   .home-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .home-tile,
+  .home-tile--large {
+    grid-column: span 1;
+
+    min-height: 180px;
+
+    padding: 22px;
+
+    border-radius: 22px;
   }
 
   .home-tile--large {
-    grid-column: span 1;
+    min-height: 210px;
+  }
+
+  .tile-arrow {
+    right: 22px;
+    bottom: 21px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-introduction {
+    gap: 20px;
+  }
+
+  .home-introduction-logo {
+    display: none;
+  }
+
+  h1 {
+    font-size: 32px;
   }
 }

@@ -1,95 +1,346 @@
 <section class="home">
 
   <div class="home-introduction">
-    <p class="home-eyebrow">Votre budget</p>
 
-    <h1>Bienvenue sur Poko</h1>
+    <div class="home-introduction-text">
+      <p class="home-eyebrow">
+        Votre espace financier
+      </p>
 
-    <p class="home-description">
-      Gérez simplement vos revenus, vos dépenses et votre budget.
-    </p>
+      <h1>
+        Bienvenue sur Poko
+      </h1>
+
+      <p class="home-description">
+        Gérez simplement vos revenus, vos dépenses et votre budget.
+      </p>
+    </div>
+
+    <div class="home-introduction-logo">
+      <img
+        src="/logo_poko.png"
+        alt="Poko"
+      >
+    </div>
+
   </div>
 
   <div class="home-grid">
 
     <a
-      class="home-tile home-tile--large"
+      class="home-tile home-tile--large home-tile--budget"
       routerLink="/budget"
     >
-      <span class="tile-title">Budget actuel</span>
-      <span class="tile-description">
-        Voir votre situation du mois
+      <div class="tile-icon">
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <rect
+            x="3"
+            y="5"
+            width="18"
+            height="14"
+            rx="3"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+          <path
+            d="M16 12h5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+          <circle
+            cx="16"
+            cy="12"
+            r="1.3"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+
+      <div class="tile-content">
+        <span class="tile-title">
+          Budget actuel
+        </span>
+
+        <span class="tile-description">
+          Voir votre situation financière du mois
+        </span>
+      </div>
+
+      <span class="tile-arrow">
+        →
       </span>
     </a>
 
     <a
-      class="home-tile"
+      class="home-tile home-tile--revenus"
       routerLink="/revenus"
     >
-      <span class="tile-title">Revenus</span>
-      <span class="tile-description">
-        Gérer vos revenus
-      </span>
+      <div class="tile-icon">
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M12 4v16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+          <path
+            d="M16 8.5c-.7-1.2-2-2-3.8-2-2.1 0-3.6 1.1-3.6 2.7 0 4.2 7.4 1.8 7.4 5.8 0 1.8-1.6 3-3.9 3-1.8 0-3.2-.7-4.1-2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+
+      <div class="tile-content">
+        <span class="tile-title">
+          Revenus
+        </span>
+
+        <span class="tile-description">
+          Gérer vos revenus
+        </span>
+      </div>
     </a>
 
     <a
-      class="home-tile"
+      class="home-tile home-tile--depenses"
       routerLink="/depenses"
     >
-      <span class="tile-title">Dépenses</span>
-      <span class="tile-description">
-        Suivre vos dépenses
-      </span>
+      <div class="tile-icon">
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M5 5h14v14H5z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8 9h8M8 13h5M8 17h3"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+
+      <div class="tile-content">
+        <span class="tile-title">
+          Dépenses
+        </span>
+
+        <span class="tile-description">
+          Suivre vos dépenses
+        </span>
+      </div>
     </a>
 
     <a
       class="home-tile"
       routerLink="/charges"
     >
-      <span class="tile-title">Charges</span>
-      <span class="tile-description">
-        Gérer vos charges fixes
-      </span>
+      <div class="tile-icon">
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <rect
+            x="4"
+            y="5"
+            width="16"
+            height="14"
+            rx="2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+          <path
+            d="M8 9h8M8 13h8M8 17h5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+
+      <div class="tile-content">
+        <span class="tile-title">
+          Charges
+        </span>
+
+        <span class="tile-description">
+          Gérer vos charges fixes
+        </span>
+      </div>
     </a>
 
     <a
       class="home-tile"
       routerLink="/synthese"
     >
-      <span class="tile-title">Synthèse</span>
-      <span class="tile-description">
-        Analyser votre budget
-      </span>
+      <div class="tile-icon">
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M5 19V10M12 19V5M19 19v-7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+
+      <div class="tile-content">
+        <span class="tile-title">
+          Synthèse
+        </span>
+
+        <span class="tile-description">
+          Analyser votre budget
+        </span>
+      </div>
     </a>
 
     <a
       class="home-tile"
       routerLink="/mois"
     >
-      <span class="tile-title">Mes mois</span>
-      <span class="tile-description">
-        Consulter votre historique
-      </span>
+      <div class="tile-icon">
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <rect
+            x="4"
+            y="5"
+            width="16"
+            height="15"
+            rx="2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+          <path
+            d="M8 3v4M16 3v4M4 10h16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+
+      <div class="tile-content">
+        <span class="tile-title">
+          Mes mois
+        </span>
+
+        <span class="tile-description">
+          Consulter votre historique
+        </span>
+      </div>
     </a>
 
     <a
       class="home-tile"
       routerLink="/objectifs"
     >
-      <span class="tile-title">Objectifs</span>
-      <span class="tile-description">
-        Suivre vos objectifs d'épargne
-      </span>
+      <div class="tile-icon">
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="8"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+          <circle
+            cx="12"
+            cy="12"
+            r="4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+          <circle
+            cx="12"
+            cy="12"
+            r="1.5"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+
+      <div class="tile-content">
+        <span class="tile-title">
+          Objectifs
+        </span>
+
+        <span class="tile-description">
+          Suivre vos objectifs d'épargne
+        </span>
+      </div>
     </a>
 
     <a
       class="home-tile"
       routerLink="/bons-plans"
     >
-      <span class="tile-title">Bons plans</span>
-      <span class="tile-description">
-        Découvrir des offres utiles
-      </span>
+      <div class="tile-icon">
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M4 7.5A2.5 2.5 0 0 1 6.5 5H18l2 2v10l-2 2H6.5A2.5 2.5 0 0 1 4 16.5z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8 12h8M12 8v8"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+
+      <div class="tile-content">
+        <span class="tile-title">
+          Bons plans
+        </span>
+
+        <span class="tile-description">
+          Découvrir des offres utiles
+        </span>
+      </div>
     </a>
 
   </div>
